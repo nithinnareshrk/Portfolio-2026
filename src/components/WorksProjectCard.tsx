@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import ProjectThumbnail from "./ProjectThumbnail";
 import styles from "./WorksProjectCard.module.css";
 
 interface WorksProjectCardProps {
@@ -29,12 +30,11 @@ export default function WorksProjectCard({
       <div
         className={`${styles.imageContainer} ${aspectRatio === "square" ? styles.imageContainerSquare : ""}`}
       >
-        <img
-          src={imageUrl}
-          alt={title}
-          className={styles.image}
+        <ProjectThumbnail
+          title={title}
+          imageUrl={imageUrl}
+          aspectRatio={aspectRatio}
         />
-        <div className={styles.imageOverlay} />
       </div>
 
       <div className={styles.contentRow} style={{ borderLeftColor: markerColor }}>
