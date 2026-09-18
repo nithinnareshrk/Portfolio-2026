@@ -1,0 +1,446 @@
+/* ── Backdrop Overlay ────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(9, 13, 24, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Desktop Dialog Card ─────────────────────────── */
+.dialog {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 94vw;
+  max-width: 960px;
+  height: 88vh;
+  max-height: 920px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  animation: scaleIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Modal Header ────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.fileIconWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.docMeta {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0 0;
+  font-family: var(--font-satoshi), sans-serif;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.downloadBtn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+
+.iconBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: transparent;
+  color: #64748b;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.closeBtn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+/* ── Body & Viewer ───────────────────────────────── */
+.viewerBody {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: #525659;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.pdfFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #ffffff;
+}
+
+/* ── Modal Footer ────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  font-size: 13px;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.footerNote {
+  font-family: var(--font-satoshi), sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contactLink {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+/* ── Mobile Action Sheet Styles (Max-width 768px) ── */
+.mobileSheet {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .dialog {
+    display: none;
+  }
+
+  .mobileSheet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 90vh;
+    background: #ffffff;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px)) 16px;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.25);
+    animation: sheetSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @keyframes sheetSlideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  /* Sheet Drag Handle */
+  .sheetHandleWrap {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0 8px 0;
+    cursor: grab;
+  }
+
+  .sheetHandle {
+    width: 44px;
+    height: 5px;
+    background-color: #cbd5e1;
+    border-radius: 9999px;
+  }
+
+  /* Sheet Header */
+  .sheetHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 6px 16px 6px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .sheetIconWrap {
+    width: 44px;
+    height: 44px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sheetTitleGroup {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sheetTitle {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  .sheetSub {
+    font-size: 13px;
+    color: #64748b;
+    margin: 2px 0 0 0;
+  }
+
+  /* Action Buttons List */
+  .actionGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .actionBtnPrimary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #2563eb;
+    color: #ffffff;
+    height: 52px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+  }
+
+  .actionBtnPrimary:active {
+    background: #1d4ed8;
+    transform: scale(0.985);
+  }
+
+  .actionBtnSecondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f1f5f9;
+    color: #0f172a;
+    height: 50px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+  }
+
+  .actionBtnSecondary:active {
+    background: #e2e8f0;
+  }
+
+  /* Highlights Card in Sheet */
+  .sheetHighlights {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .highlightsTitle {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-bottom: 8px;
+  }
+
+  .highlightList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .highlightItem {
+    font-size: 13px;
+    color: #334155;
+    line-height: 1.45;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .bulletDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #2563eb;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* Cancel Button */
+  .cancelBtn {
+    margin-top: 14px;
+    height: 48px;
+    width: 100%;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .cancelBtn:active {
+    background: #f1f5f9;
+    color: #0f172a;
+  }
+}

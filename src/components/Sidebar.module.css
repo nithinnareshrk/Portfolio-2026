@@ -1,0 +1,230 @@
+/* ── Sidebar Shell ──────────────────────────────── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 24px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* ── Profile Section ────────────────────────────── */
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.expandOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.avatar:hover .expandOverlay {
+  opacity: 1;
+}
+
+.avatar.expanded .expandOverlay {
+  opacity: 0;
+}
+
+.avatar.expanded {
+  width: 100%;
+  height: 240px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.6);
+  transform-origin: center 25%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.avatar.expanded .avatarImg {
+  transform: scale(1.1);
+  transform-origin: center center;
+}
+
+.name {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-h3);
+  margin: 0 0 2px 0;
+  color: var(--text-primary);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.role {
+  font-size: var(--fs-small);
+  margin: 0;
+  color: var(--text-secondary);
+  font-weight: var(--fw-small);
+  line-height: var(--lh-small);
+  font-family: var(--font-satoshi), sans-serif;
+}
+
+/* ── Main Nav ───────────────────────────────────── */
+.mainNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* ── Shared Nav Link ────────────────────────────── */
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--fs-small);
+  height: 44px;
+  color: #A1A1AA;
+  font-weight: var(--fw-small);
+  padding: 0;
+  border-radius: 8px;
+  transition: color 0.18s ease, transform 0.15s ease;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: var(--ls-small);
+}
+
+.iconContainer {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navLink svg {
+  transition: color 0.18s ease;
+  flex-shrink: 0;
+}
+
+.navLink:hover {
+  color: #4b5563;
+}
+
+.navLink:hover svg {
+  color: #4b5563;
+}
+
+/* Active state */
+.navLink.active {
+  color: #2563EB;
+  font-weight: var(--fw-small);
+  background-color: transparent;
+}
+
+.navLink.active svg {
+  color: #2563EB;
+}
+
+/* ── Bottom Nav ─────────────────────────────────── */
+.bottomNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Secondary link override (slightly muted) */
+.navLink.secondary {
+  font-size: var(--fs-small);
+  color: #9ca3af;
+}
+
+.navLink.secondary:hover {
+  color: var(--text-secondary);
+  background-color: #f9fafb;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    padding: 16px 12px;
+    overflow-y: auto;
+  }
+
+  .profileSection {
+    margin-bottom: 24px;
+    padding: 6px;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 52px;
+    height: 52px;
+  }
+
+  .avatar.expanded {
+    height: 180px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .role {
+    font-size: 11px;
+  }
+
+  .navLink {
+    height: 40px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .iconContainer {
+    width: 36px;
+    height: 36px;
+  }
+}

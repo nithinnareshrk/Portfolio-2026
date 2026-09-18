@@ -1,0 +1,641 @@
+/* ─────────────────────────────────────────────────────
+   Marketplace & Integrations — Case Study Page Styles
+   Strictly aligned with Portfolio Design System & Typography
+───────────────────────────────────────────────────── */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary, #f5f5f7);
+  font-family: var(--font-satoshi), sans-serif;
+  color: var(--text-primary, #111827);
+  padding-bottom: 0;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 100px 40px;
+}
+
+.sectionWhite {
+  background-color: #ffffff;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.sectionWarm {
+  background-color: var(--surface-warm, #f7f6f2);
+  width: 100%;
+  border-top: 1px solid var(--surface-warm-border, #e7e4dc);
+  border-bottom: 1px solid var(--surface-warm-border, #e7e4dc);
+}
+
+.sectionNavy {
+  background-color: var(--surface-navy, #0b0f19);
+  color: #f8fafc;
+  width: 100%;
+  border-top: 1px solid var(--surface-navy-border, rgba(255, 255, 255, 0.08));
+  border-bottom: 1px solid var(--surface-navy-border, rgba(255, 255, 255, 0.08));
+}
+
+.sectionNavy .h2,
+.sectionNavy .h3 {
+  color: #ffffff;
+}
+
+.sectionNavy .lead,
+.sectionNavy .body {
+  color: #94a3b8;
+}
+
+.sectionNavy .body p {
+  color: #cbd5e1;
+}
+
+.sectionNavy .sectionLabel {
+  color: #60a5fa;
+}
+
+.sectionNavy .matrixContainer {
+  background: var(--surface-navy-card, #131b2e);
+  border-color: var(--surface-navy-border, rgba(255, 255, 255, 0.1));
+}
+
+.sectionNavy .matrixHeader {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+}
+
+.sectionNavy .matrixRow {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.sectionNavy .matrixColLeft {
+  color: #e2e8f0;
+}
+
+.sectionNavy .matrixColMid {
+  color: #60a5fa;
+}
+
+.sectionNavy .matrixColRight {
+  color: #cbd5e1;
+}
+
+.sectionNavy .checklistItem {
+  background: var(--surface-navy-card, #131b2e);
+  border-color: var(--surface-navy-border, rgba(255, 255, 255, 0.1));
+  color: #f1f5f9;
+}
+
+.sectionLabel {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-caption);
+  line-height: var(--lh-caption);
+  color: var(--accent-blue, #2563eb);
+  letter-spacing: var(--ls-caption);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-family: var(--font-satoshi), sans-serif;
+}
+
+.h2 {
+  font-size: var(--fs-h1);
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: var(--fw-h1);
+  color: var(--text-primary, #111827);
+  margin-bottom: 24px;
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  max-width: 860px;
+}
+
+.h3 {
+  font-size: var(--fs-h3);
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: var(--fw-h3);
+  color: var(--text-primary, #111827);
+  margin-bottom: 12px;
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: #374151;
+  margin-bottom: 24px;
+  max-width: 820px;
+  font-weight: var(--fw-lead);
+}
+
+.body {
+  font-size: var(--fs-body);
+  color: #4b5563;
+  line-height: var(--lh-body);
+  font-weight: var(--fw-body);
+  max-width: 800px;
+}
+
+.body p + p {
+  margin-top: 16px;
+}
+
+/* ── HERO ────────────────────────────────────────── */
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #e5e7eb;
+  color: #374151;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-caption);
+  letter-spacing: var(--ls-caption);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.heroBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #2563eb;
+}
+
+.heroTitle {
+  font-size: var(--fs-display);
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: var(--fw-display);
+  color: var(--text-primary, #111827);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  max-width: 960px;
+  margin-bottom: 28px;
+}
+
+.heroSub {
+  font-size: var(--fs-lead);
+  color: #4b5563;
+  max-width: 840px;
+  line-height: var(--lh-lead);
+  font-weight: var(--fw-body);
+  margin-bottom: 24px;
+}
+
+.heroAccent {
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-small);
+  color: var(--accent-blue, #2563eb);
+  max-width: 840px;
+  line-height: var(--lh-lead);
+}
+
+.metaDivider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-light, #e5e7eb);
+  margin: 40px 0;
+}
+
+.metaRow {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.metaValue {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ── BLOCKQUOTE / QUESTION CALLOUT ──────────────── */
+.questionBox {
+  background: #ffffff;
+  border-left: 4px solid var(--accent-blue, #2563eb);
+  padding: 28px 36px;
+  border-radius: 0 16px 16px 0;
+  margin: 32px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.questionText {
+  font-size: 21px;
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+
+/* ── FLOWCHART BOX ───────────────────────────────── */
+.flowChartContainer {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 32px;
+  border-radius: 16px;
+  margin: 36px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.flowRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.flowCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.flowStepNum {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--accent-blue, #2563eb);
+  text-transform: uppercase;
+}
+
+.flowStepText {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.flowArrow {
+  font-size: 18px;
+  color: #94a3b8;
+  font-weight: bold;
+}
+
+.flowCardActive {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+/* ── ATTRIBUTE TRANSLATION MATRIX ────────────────── */
+.matrixContainer {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 32px 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.matrixHeader {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.matrixRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 14px;
+}
+
+.matrixRow:last-child {
+  border-bottom: none;
+}
+
+.matrixColLeft {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.matrixColMid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.matrixColRight {
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matrixBadgeOk {
+  background: #dcfce7;
+  color: #166534;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.matrixBadgeWarn {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* ── CHECKLIST GRID ──────────────────────────────── */
+.checklistGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.checkDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-blue, #2563eb);
+  flex-shrink: 0;
+}
+
+/* ── 06. DESIGN DECISIONS ────────────────────────── */
+.decisionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.decisionCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.decisionNum {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent-blue, #2563eb);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.decisionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.decisionDesc {
+  font-size: 14.5px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ── 07. IMPACT METRICS ──────────────────────────── */
+.impactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin: 36px 0;
+}
+
+.impactCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.impactIcon {
+  color: var(--accent-blue, #2563eb);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.impactText {
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.impactShiftBox {
+  background: #111827;
+  color: #ffffff;
+  padding: 28px 36px;
+  border-radius: 16px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.impactShiftText {
+  font-size: 20px;
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 700;
+  color: #f9fafb;
+  letter-spacing: -0.3px;
+}
+
+/* ─────────────────────────────────────────────────────
+   IMAGE SYSTEM — Browser Window Frame & Container
+───────────────────────────────────────────────────── */
+.imageContainer {
+  margin: 48px 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.imageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.imageIdBadge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4b5563;
+  letter-spacing: 0.5px;
+}
+
+.imagePurpose {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.imageViewport {
+  position: relative;
+  width: 100%;
+  background: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+.browserFrame {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── CLOSING SECTION ─────────────────────────────── */
+.closingSection {
+  background: #111827;
+  padding: 120px 40px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.closingInner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.closingTitle {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--font-manrope), sans-serif;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.closingBody {
+  font-size: 18px;
+  color: #9ca3af;
+  line-height: 1.7;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.closingBody strong {
+  color: #f3f4f6;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 868px) {
+  .inner {
+    padding: 60px 24px;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+  }
+
+  .h2 {
+    font-size: 28px;
+  }
+
+  .metaRow {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .decisionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .flowRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .flowArrow {
+    text-align: center;
+    transform: rotate(90deg);
+  }
+
+  .matrixHeader,
+  .matrixRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .matrixColMid {
+    justify-content: flex-start;
+  }
+
+  .imageViewport {
+    padding: 16px;
+  }
+}
