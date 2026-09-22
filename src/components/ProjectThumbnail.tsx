@@ -5,8 +5,8 @@ import styles from "./ProjectThumbnail.module.css";
 
 interface ProjectThumbnailProps {
   title: string;
-  imageUrl: string;
-  aspectRatio?: "wide" | "square";
+  imageUrl?: string;
+  aspectRatio?: "wide" | "square" | "fill";
 }
 
 export default function ProjectThumbnail({
@@ -28,13 +28,13 @@ export default function ProjectThumbnail({
   const normalizedTitle = title.toLowerCase().trim();
 
   const isGearGuru = normalizedTitle.includes("gear guru") || normalizedTitle.includes("gearguru");
-  const isRehab = normalizedTitle.includes("rehabilitation") || normalizedTitle.includes("rehab");
+  const isRehab = normalizedTitle.includes("rehabilitation") || normalizedTitle.includes("rehab") || normalizedTitle.includes("recovery");
   const isDesignSystem = normalizedTitle.includes("design system");
-  const isTnM = normalizedTitle.includes("t&m") || normalizedTitle.includes("time and material");
+  const isTnM = normalizedTitle.includes("t&m") || normalizedTitle.includes("time & material") || normalizedTitle.includes("time and material");
   const isJournal = normalizedTitle.includes("journal");
   const isSingleObject = normalizedTitle.includes("single object");
   const isMarketplace = normalizedTitle.includes("market");
-  const isToolbox = normalizedTitle.includes("toolbox") || normalizedTitle.includes("safty");
+  const isToolbox = normalizedTitle.includes("toolbox") || normalizedTitle.includes("safty") || normalizedTitle.includes("safety");
 
   // Determine specific variant class for project-tailored blue gradients
   let variantClass = styles.variantDefault;
@@ -47,12 +47,17 @@ export default function ProjectThumbnail({
   else if (isMarketplace) variantClass = styles.variantMarketplace;
   else if (isToolbox) variantClass = styles.variantToolbox;
 
+  let aspectClass = styles.aspectWide;
+  if (aspectRatio === "square") {
+    aspectClass = styles.aspectSquare;
+  } else if (aspectRatio === "fill") {
+    aspectClass = styles.aspectFill;
+  }
+
   return (
     <div
       ref={containerRef}
-      className={`${styles.thumbnailWrapper} ${variantClass} ${
-        aspectRatio === "square" ? styles.aspectSquare : styles.aspectWide
-      }`}
+      className={`${styles.thumbnailWrapper} ${variantClass} ${aspectClass}`}
       onMouseMove={handleMouseMove}
     >
       {/* Interactive blue radial glow & sweep */}
@@ -60,20 +65,25 @@ export default function ProjectThumbnail({
       <div className={styles.lightSweep} aria-hidden="true" />
       <div className={styles.bgMeshGrid} aria-hidden="true" />
 
-      {/* ── PROJECT-SPECIFIC COMPOSITION ── */}
+      {/* ── PROJECT-SPECIFIC COMPOSITION (STRICTLY FROM CASE STUDY SCREENS) ── */}
       {isGearGuru && (
         <div className={styles.compositionGearGuru}>
-          <div className={styles.backCard}>
-            <img src="/images/gear-guru/final-garage-showcase.png" alt="" />
+          <div className={styles.gearGuruBackPhone}>
+            <img
+              src="/images/gear-guru/final-store-home.png"
+              alt="Gear Guru Store"
+              draggable={false}
+            />
           </div>
-          <div className={styles.mainPhoneMockup}>
-            <div className={styles.phoneHeaderBar}>
-              <span className={styles.phoneSpeaker} />
-            </div>
-            <img src="/images/gear-guru/final-community-feed.png" alt={title} />
+          <div className={styles.gearGuruFrontPhone}>
+            <img
+              src="/images/gear-guru/final-community-feed.png"
+              alt={title}
+              draggable={false}
+            />
           </div>
-          <div className={styles.sideCard}>
-            <img src="/images/gear-guru/final-store-home.png" alt="" />
+          <div className={styles.gearGuruPill}>
+            <span className={styles.pillDot} /> Community &amp; Marketplace
           </div>
         </div>
       )}
@@ -81,10 +91,10 @@ export default function ProjectThumbnail({
       {isRehab && (
         <div className={styles.compositionRehab}>
           <div className={styles.rehabCardLeft}>
-            <img src="/images/rehab/Home A Calm Start.jpg" alt={title} />
+            <img src="/images/works/rehab/Section 5 start with clarity.jpg" alt={title} draggable={false} />
           </div>
           <div className={styles.rehabCardRight}>
-            <img src="/images/rehab/Tracking Clarity.jpg" alt="" />
+            <img src="/images/works/rehab/section 5 Focus on Movement.jpg" alt="" draggable={false} />
           </div>
           <div className={styles.rehabFloatingPill}>
             <span className={styles.pillDot} /> Recovery Tracker
@@ -102,7 +112,7 @@ export default function ProjectThumbnail({
               <span className={styles.dsTitleTag}>ATOMIC_SYSTEM_V2.0</span>
             </div>
             <div className={styles.dsImageHolder}>
-              <img src="/images/works/design system thumbnail.jpg" alt={title} />
+              <img src="/images/works/design system thumbnail.jpg" alt={title} draggable={false} />
             </div>
           </div>
           <div className={styles.dsTokenBadgeLeft}>TOKENS & COMPONENTS</div>
@@ -113,10 +123,10 @@ export default function ProjectThumbnail({
       {isTnM && (
         <div className={styles.compositionTnM}>
           <div className={styles.tnmBackSheet}>
-            <img src="/images/t-and-m/cost_record.png" alt="" />
+            <img src="/images/t-and-m/review_approval.png" alt="" draggable={false} />
           </div>
           <div className={styles.tnmMainFrame}>
-            <img src="/images/t-and-m/tnm_flow_composite.png" alt={title} />
+            <img src="/images/t-and-m/tnm_complete_overview.png" alt={title} draggable={false} />
           </div>
           <div className={styles.tnmTag}>T&M WORKFLOW</div>
         </div>
@@ -125,10 +135,10 @@ export default function ProjectThumbnail({
       {isJournal && (
         <div className={styles.compositionJournal}>
           <div className={styles.journalCardSecondary}>
-            <img src="/images/journal/journal-03-climate.png" alt="" />
+            <img src="/images/journal/journal-03-climate.png" alt="" draggable={false} />
           </div>
           <div className={styles.journalCardPrimary}>
-            <img src="/images/journal/journal-01-full-view.png" alt={title} />
+            <img src="/images/journal/journal-01-full-view.png" alt={title} draggable={false} />
           </div>
         </div>
       )}
@@ -136,10 +146,10 @@ export default function ProjectThumbnail({
       {isSingleObject && (
         <div className={styles.compositionSingleObject}>
           <div className={styles.soWorkflowSide}>
-            <img src="/images/single-object/section_workflow.png" alt="" />
+            <img src="/images/single-object/old_generated_report.png" alt="" draggable={false} />
           </div>
           <div className={styles.soEditorMain}>
-            <img src="/images/single-object/sectionized_editor.png" alt={title} />
+            <img src="/images/single-object/sectionized_editor.png" alt={title} draggable={false} />
           </div>
         </div>
       )}
@@ -147,10 +157,10 @@ export default function ProjectThumbnail({
       {isMarketplace && (
         <div className={styles.compositionMarketplace}>
           <div className={styles.mpMappingLayer}>
-            <img src="/images/marketplace/marketplace-03-mapping.png" alt="" />
+            <img src="/images/marketplace/marketplace-03-mapping.png" alt="" draggable={false} />
           </div>
           <div className={styles.mpEcosystemMain}>
-            <img src="/images/marketplace/marketplace-01-ecosystem.png" alt={title} />
+            <img src="/images/marketplace/marketplace-01-ecosystem.png" alt={title} draggable={false} />
           </div>
         </div>
       )}
@@ -158,10 +168,10 @@ export default function ProjectThumbnail({
       {isToolbox && (
         <div className={styles.compositionToolbox}>
           <div className={styles.toolboxWebMain}>
-            <img src="/images/toolbox-talk/01-overview.png" alt={title} />
+            <img src="/images/toolbox-talk/01-overview.png" alt={title} draggable={false} />
           </div>
           <div className={styles.toolboxMobileFloating}>
-            <img src="/images/toolbox-talk/04-mobile-attendance.png" alt="" />
+            <img src="/images/toolbox-talk/04-mobile-attendance.png" alt="" draggable={false} />
           </div>
         </div>
       )}
@@ -176,7 +186,7 @@ export default function ProjectThumbnail({
         !isMarketplace &&
         !isToolbox && (
           <div className={styles.compositionDefault}>
-            <img src={imageUrl} alt={title} className={styles.defaultImg} />
+            <img src={imageUrl} alt={title} className={styles.defaultImg} draggable={false} />
           </div>
         )}
     </div>

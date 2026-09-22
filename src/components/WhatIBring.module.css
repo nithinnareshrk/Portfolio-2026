@@ -4,15 +4,18 @@
 ----------------------------------------------------- */
 
 .section {
-  padding: 64px 0 80px 0;
+  padding: 80px 80px;
   background-color: var(--bg-primary, #ffffff);
   border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0;
 }
 
 .sectionHeader {
@@ -54,13 +57,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 36px;
   align-items: stretch;
+  min-height: 630px;
 }
 
 /* -- LEFT COLUMN: 4 EQUAL INTERACTIVE CARDS -- */
 .pillarsNav {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   height: 100%;
 }
 
@@ -68,8 +72,8 @@
   flex: 1;
   background-color: #ffffff;
   border: 1px solid var(--border-subtle, #e2e8f0);
-  border-radius: 16px;
-  padding: 20px 24px;
+  border-radius: 14px;
+  padding: 14px 18px;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -155,21 +159,22 @@
 .panelWrapper {
   background-color: #ffffff;
   border: 1px solid var(--border-subtle, #e2e8f0);
-  border-radius: 20px;
-  padding: 28px 32px;
+  border-radius: 18px;
+  padding: 20px 24px;
   box-shadow: var(--shadow-elevated, 0 4px 8px -2px rgba(0, 0, 0, 0.05), 0 12px 24px -4px rgba(0, 0, 0, 0.04));
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
+  min-height: 630px;
+  box-sizing: border-box;
 }
 
 .fadeAnimation {
   animation: fadeIn 0.35s ease-in-out;
   display: flex;
   flex-direction: column;
+  flex: 1;
   height: 100%;
-  justify-content: space-between;
 }
 
 @keyframes fadeIn {
@@ -186,7 +191,7 @@
 .sectionBlock {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .blockHeader {
@@ -208,19 +213,20 @@
 .editorialFlowList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .editorialStepRow {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .stepTitleRow {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 24px;
 }
 
 .stepNumBadge {
@@ -244,38 +250,46 @@
 .editorialStepDesc {
   font-size: 14px;
   color: #4b5563;
-  line-height: 1.5;
+  line-height: 1.45;
   margin: 0;
   padding-left: 36px;
+  min-height: 40px;
 }
 
 .stepSubtleDivider {
   height: 1px;
   background-color: #f1f5f9;
-  margin-top: 10px;
+  margin-top: 6px;
+}
+
+/* Bottom Section Anchored via Flexbox */
+.bottomSection {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .panelDivider {
   height: 1px;
   background-color: #e2e8f0;
-  margin: 20px 0;
+  margin: 0 0 12px 0;
 }
 
 /* -- APPLIED IN: REBALANCED WIDESCREEN PROJECT SHOWCASE -- */
 .appliedInBlock {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .caseStudyCard {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 14px 16px;
   display: flex;
-  gap: 20px;
-  align-items: center;
+  gap: 16px;
+  align-items: flex-start;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -285,15 +299,31 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
+.caseStudyImageLink {
+  display: block;
+  flex-shrink: 0;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .caseStudyImageWrapper {
   position: relative;
-  width: 200px;
-  height: 125px;
-  border-radius: 12px;
+  width: 185px;
+  height: 135px;
+  min-height: 135px;
+  border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
-  background: #e2e8f0;
-  border: 1px solid #cbd5e1;
+  background: #0b172a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .caseStudyContent {
@@ -301,10 +331,11 @@
   flex-direction: column;
   gap: 6px;
   flex: 1;
+  min-width: 0;
 }
 
 .caseStudyTitle {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: #111827;
   margin: 0;
@@ -317,10 +348,12 @@
   font-weight: 700;
   color: var(--accent-blue, #2563eb);
   background-color: #eff6ff;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 100px;
   width: fit-content;
   letter-spacing: 0.3px;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .caseStudyReason {
@@ -328,6 +361,12 @@
   color: #4b5563;
   line-height: 1.45;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 56px;
 }
 
 .caseStudyCta {
@@ -467,12 +506,43 @@
 
   .caseStudyCard {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .caseStudyImageLink {
+    width: 100%;
+    display: block;
   }
 
   .caseStudyImageWrapper {
     width: 100%;
-    height: 180px;
+    height: 160px;
+    min-height: 160px;
+    border-radius: 10px;
+  }
+
+  .mobilePillarCard .fadeAnimation {
+    height: auto;
+    min-height: unset;
+  }
+
+  .bottomSection {
+    margin-top: 0;
+  }
+
+  .panelDivider {
+    margin: 16px 0 12px 0;
+  }
+
+  .editorialStepDesc {
+    min-height: unset;
+  }
+
+  .caseStudyReason {
+    min-height: unset;
+    -webkit-line-clamp: 3;
   }
 }
 
@@ -480,16 +550,24 @@
 @media (min-width: 769px) and (max-width: 1200px) {
   .caseStudyCard {
     flex-direction: row;
-    align-items: center;
-    gap: 24px;
-    padding: 20px;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 16px;
+  }
+
+  .caseStudyImageLink {
+    display: block;
+    align-self: flex-start;
+    width: auto;
+    flex-shrink: 0;
   }
 
   .caseStudyImageWrapper {
-    width: 240px;
-    height: 155px;
+    width: 185px;
+    height: 135px;
+    min-height: 135px;
     flex-shrink: 0;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
   .caseStudyContent {
@@ -502,13 +580,13 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .section {
-    padding: 48px 0;
+    padding: 56px 20px;
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0;
   }
 
   .headline {

@@ -259,80 +259,73 @@
   letter-spacing: var(--ls-body);
 }
 
-.statsGrid {
+/* ── Hero Focus Card (Prominent Single Card) ── */
+.heroFocusWrapper {
+  margin-bottom: 48px;
   display: flex;
-  gap: 20px;
-  margin-bottom: 56px;
-  width: 80%;
 }
 
-.statCard {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 12px;
-  padding: 16px 20px;
-  display: flex;
-  flex: 1;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+.heroFocusCard {
+  background-color: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 18px 24px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.22s ease, transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  min-width: 280px;
 }
 
-.statCard:hover {
-  background-color: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+.heroFocusCard:hover {
+  background-color: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
 
-.statHeader {
+.heroFocusHeader {
   display: flex;
   align-items: center;
   gap: 16px;
   width: 100%;
 }
 
-.iconBox {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.heroFocusIconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 11px;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 99, 235, 0.24);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #e5e7eb;
+  color: #60a5fa;
+  flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(37, 99, 235, 0.18);
 }
 
-.statDivider {
-  height: 1px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 4px 0;
-}
-
-.statInfo {
+.heroFocusInfo {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.statTitle {
-  font-size: var(--fs-body);
-  font-weight: var(--fw-small);
-  color: #ffffff;
-  margin-bottom: 2px;
-}
- 
-.statValue {
-  font-size: var(--fs-small);
-  color: #9ca3af;
-  font-weight: var(--fw-body);
+.heroFocusTitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.statDesc {
-  font-size: var(--fs-small);
-  color: #d1d5db;
-  font-weight: var(--fw-body);
+.heroFocusValue {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .ctaButton {
@@ -496,10 +489,7 @@
 
 /* ── JOURNAL SECTION ────────────────────── */
 .journalSection {
-  padding-top: var(--section-padding-y);
-  padding-bottom: var(--section-padding-y);
-  padding-left: 80px;
-  padding-right: 80px;
+  padding: 80px 80px;
   background-color: #ffffff;
 }
 
@@ -661,37 +651,8 @@
     padding-right: 40px;
   }
 
-  .statsGrid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+  .heroFocusWrapper {
     margin-bottom: 40px;
-  }
-
-  .statCard {
-    padding: 14px 14px;
-  }
-
-  .statHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .iconBox {
-    width: 36px;
-    height: 36px;
-  }
-
-  .statTitle {
-    font-size: 11px;
-    letter-spacing: 0.3px;
-  }
-
-  .statValue {
-    font-size: 13.5px;
-    line-height: 1.3;
   }
   
     .worksGrid {
@@ -734,15 +695,15 @@
     margin-bottom: 32px;
   }
 
-  .statsGrid {
+  .heroFocusWrapper {
     width: 100%;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 
-  .statCard {
-    padding: 14px 16px;
+  .heroFocusCard {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 20px;
   }
 
   .journalHeading {

@@ -1,7 +1,8 @@
-import { ArrowRight, LayoutTemplate, Calendar, Folder } from "lucide-react";
+import { ArrowRight, LayoutTemplate } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import WhatIBring from "@/components/WhatIBring";
+import ProofRow from "@/components/ProofRow";
 import ThingsICareAbout from "@/components/ThingsICareAbout";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
@@ -37,39 +38,16 @@ export default function Home() {
           Product Designer specializing in enterprise SaaS, workflow systems, and scalable digital products—transforming operational complexity into intuitive experiences through structure and systems thinking.
         </p>
 
-        <div className={styles.statsGrid}>
-          <div className={styles.statCard}>
-            <div className={styles.statHeader}>
-              <div className={styles.iconBox}>
-                <Calendar size={20} strokeWidth={2} />
+        {/* Sole Hero Card: Focus (Enterprise SaaS) with increased sizing & prominence */}
+        <div className={styles.heroFocusWrapper}>
+          <div className={styles.heroFocusCard}>
+            <div className={styles.heroFocusHeader}>
+              <div className={styles.heroFocusIconBox}>
+                <LayoutTemplate size={22} strokeWidth={2} />
               </div>
-              <div className={styles.statInfo}>
-                <span className={styles.statTitle}>Experience</span>
-                <span className={styles.statValue}>1.3 years</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className={styles.statCard}>
-            <div className={styles.statHeader}>
-              <div className={styles.iconBox}>
-                <Folder size={20} strokeWidth={2} />
-              </div>
-              <div className={styles.statInfo}>
-                <span className={styles.statTitle}>Works - 10+</span>
-                <span className={styles.statValue}>SaaS / Web / Mobile</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className={styles.statCard}>
-            <div className={styles.statHeader}>
-              <div className={styles.iconBox}>
-                <LayoutTemplate size={20} strokeWidth={2} />
-              </div>
-              <div className={styles.statInfo}>
-                <span className={styles.statTitle}>Focus</span>
-                <span className={styles.statValue}>Enterprise SaaS</span>
+              <div className={styles.heroFocusInfo}>
+                <span className={styles.heroFocusTitle}>Focus</span>
+                <span className={styles.heroFocusValue}>Enterprise SaaS</span>
               </div>
             </div>
           </div>
@@ -83,6 +61,9 @@ export default function Home() {
 
       {/* ── 02. DESIGN IN PRACTICE SECTION ── */}
       <WhatIBring />
+
+      {/* ── 02b. KEY PROOF & STATISTICS ROW ── */}
+      <ProofRow />
 
       {/* ── 03. THINGS I CARE ABOUT SECTION ── */}
       <ThingsICareAbout />

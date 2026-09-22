@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# backups
+page.backup.tsx
+page.module.backup.css
+
+# scripts
+scripts/get-images.js
+
+

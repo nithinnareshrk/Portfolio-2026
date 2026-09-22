@@ -12,7 +12,7 @@ const SECTIONS: SectionItem[] = [
   { id: "overview", label: "Overview" },
   { id: "context", label: "01. The Context" },
   { id: "signal", label: "02. The Signal" },
-  { id: "constraint", label: "03. The Constraint" },
+  { id: "constraints", label: "03. Constraints & Trade-offs" },
   { id: "shift", label: "04. The Shift" },
   { id: "experience", label: "05. The Experience" },
   { id: "detail", label: "06. The Detail" },
@@ -63,19 +63,19 @@ export default function SingleObjectPage() {
         <div style={{ marginTop: "20px" }}>
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgeDot} />
-            LINARC WORKS • REPORT SYSTEM
+            PRODUCT DESIGN • REPORT GENERATOR
           </div>
 
           <h1 className={styles.heroTitle}>
-            Single Object — Moving Report Customization Out of Code
+            Report Generator — Moving Customization Out of Code
           </h1>
 
           <p className={styles.heroSub}>
-            Turning hardcoded, developer-defined reports into a structured, customer-controlled template experience without building a document editor from scratch.
+            Turning hardcoded, developer-defined documents into a structured, customer-controlled template system without building a document editor from scratch.
           </p>
 
           <p className={styles.heroAccent}>
-            We gave the report a structure so customers could customize their documents without having to design them from a blank canvas.
+            We gave the report a structure so teams could customize documents without having to design them from a blank canvas.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export default function SingleObjectPage() {
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>CONTEXT</span>
-            <span className={styles.metaValue}>Linarc Platform</span>
+            <span className={styles.metaValue}>Enterprise Construction Platform</span>
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>SCOPE</span>
@@ -213,35 +213,37 @@ export default function SingleObjectPage() {
         </div>
       </div>
 
-      {/* ── 03. THE CONSTRAINT ───────────────────────────── */}
-      <div className={styles.sectionNavy} id="constraint">
+      {/* ── 03. CONSTRAINTS & TRADE-OFFS ─────────────────── */}
+      <div className={styles.sectionNavy} id="constraints">
         <div className={styles.inner}>
-          <div className={styles.sectionLabel}>03. THE CONSTRAINT</div>
+          <div className={styles.sectionLabel}>03. CONSTRAINTS &amp; TRADE-OFFS</div>
           <h2 className={styles.h2}>
-            We wanted to give customers control, but we didn&apos;t want to build a document editor from scratch.
+            Balancing creative control with technical feasibility and persona fit.
           </h2>
 
           <div className={styles.body}>
             <p>
-              Our first thought was naturally an open-ended editor.
+              When the initial request arrived, our first instinct was naturally an open-ended editor—a blank canvas where users could place elements wherever they wanted, resize boxes, adjust alignment freely, and design reports from scratch just like a desktop publishing tool.
             </p>
             <p>
-              Something where users could place elements wherever they wanted, resize them, adjust alignment, add pages, work with headers and footers, and essentially design the report themselves.
+              However, when we evaluated what that path would actually require, two real constraints shaped our direction:
             </p>
             <p>
-              We had some of that thinking in the existing editor direction already, with controls for text, images, shapes, dynamic fields, positioning, alignment, typography, pages and other document elements.
+              <strong>1. Technical Feasibility &amp; Timeline:</strong> We already had an existing rich text editor component built and available in the product, but it was designed as an embedded piece rather than a standalone open-ended canvas. Building a true, freeform drag-and-drop document editor from scratch was simply not feasible on the delivery timeline we needed.
             </p>
             <p>
-              But building a truly flexible editor from scratch would take considerable time. And we had a customer problem we wanted to solve now.
+              <strong>2. Persona Fit &amp; User Reality:</strong> The actual people creating, maintaining, and generating these reports were construction site teams and project managers—not trained graphic designers. They did not have dedicated in-house design resources. Handing them an open-ended, blank canvas risked overwhelming them with layout decisions, broken alignments, and inconsistent document formatting rather than empowering them.
             </p>
-            <p style={{ fontWeight: 600, color: "#1f2937", marginTop: "24px" }}>
-              So rather than trying to build the perfect document editor first, we asked:
+            <p style={{ marginTop: "24px", fontWeight: 600, color: "#cbd5e1" }}>
+              The resolution was a section-based editor built directly on top of our existing rich text component.
+            </p>
+            <p>
+              We extended the component with structured layout controls—custom brand colors, backgrounds, blur treatments, and section margins. Users retained meaningful creative control over the visual presentation and field contents without ever having to manage complex coordinate grids or worry about breaking the underlying layout.
+            </p>
+            <p>
+              <strong>An unplanned architectural benefit:</strong> Structuring the report into clear, modular sections rather than a single monolithic canvas produced an unexpected long-term advantage. Because each section operated as an independent container, the editor naturally extended to support multi-object and multi-page reports later on—a capability that was not part of the original scope, but emerged effortlessly from the section-based architecture.
             </p>
           </div>
-
-          <p className={styles.lead} style={{ marginTop: "16px", color: "#2563eb" }}>
-            &ldquo;What is the simplest editing model that gives customers meaningful control over our reports?&rdquo;
-          </p>
 
           {/* Visual 03 — Product Evolution / Roadmap */}
           <div className={styles.roadmapGrid}>
@@ -249,36 +251,36 @@ export default function SingleObjectPage() {
               <span className={styles.roadmapStage}>STAGE 01</span>
               <h3 className={styles.roadmapTitle}>Hardcoded Reports</h3>
               <p className={styles.roadmapDesc}>
-                Existing state defined in code. Zero customer control, 100% developer dependency.
+                Legacy state defined in code. Zero customer control, 100% developer dependency.
               </p>
               <span className={styles.roadmapPill}>Initial Baseline</span>
             </div>
 
             <div className={`${styles.roadmapCard} ${styles.roadmapCardActive}`}>
-              <span className={`${styles.roadmapStage} ${styles.roadmapStageActive}`}>STAGE 02 · REALISTIC STEP</span>
-              <h3 className={styles.roadmapTitle}>Sectionized Editor</h3>
+              <span className={`${styles.roadmapStage} ${styles.roadmapStageActive}`}>STAGE 02 · PRAGMATIC STEP</span>
+              <h3 className={styles.roadmapTitle}>Section-Based Editor</h3>
               <p className={styles.roadmapDesc}>
-                Structured Header, Body, and Footer sections designed around Linarc report objects.
+                Structured Header, Body, and Footer built on top of rich text components with custom styling controls.
               </p>
-              <span className={`${styles.roadmapPill} ${styles.roadmapPillActive}`}>Built &amp; Delivered</span>
+              <span className={`${styles.roadmapPill} ${styles.roadmapPillActive}`}>Delivered Solution</span>
             </div>
 
             <div className={styles.roadmapCard}>
               <span className={styles.roadmapStage}>STAGE 03</span>
-              <h3 className={styles.roadmapTitle}>Customer-Controlled</h3>
+              <h3 className={styles.roadmapTitle}>Multi-Object Scaling</h3>
               <p className={styles.roadmapDesc}>
-                Immediate outcome: customers customize fields without worrying about layout margins.
+                Unplanned benefit: modular sections scaled effortlessly to complex multi-object reports.
               </p>
-              <span className={styles.roadmapPill}>Immediate Outcome</span>
+              <span className={styles.roadmapPill}>Emergent Benefit</span>
             </div>
 
             <div className={styles.roadmapCard}>
               <span className={styles.roadmapStage}>STAGE 04</span>
-              <h3 className={styles.roadmapTitle}>More Flexible Editor</h3>
+              <h3 className={styles.roadmapTitle}>Open-Ended Controls</h3>
               <p className={styles.roadmapDesc}>
-                Longer-term direction: open-ended canvas controls added incrementally over time.
+                Longer-term roadmap: deeper canvas flexibility added incrementally as customer needs mature.
               </p>
-              <span className={styles.roadmapPill}>Future Roadmap</span>
+              <span className={styles.roadmapPill}>Future Horizon</span>
             </div>
           </div>
         </div>
@@ -431,7 +433,7 @@ export default function SingleObjectPage() {
         </div>
       </div>
 
-      {/* ── 08. THE DIRECTION ────────────────────────────── */}
+      {/* ── 08. THE DIRECTION ─────────────────────── */}
       <div className={styles.inner} id="direction">
         <div className={styles.sectionLabel}>08. THE DIRECTION</div>
         <h2 className={styles.h2}>
@@ -458,6 +460,9 @@ export default function SingleObjectPage() {
           <p>It was:</p>
           <p style={{ fontStyle: "italic", fontWeight: 700, color: "#2563eb", fontSize: "18px" }}>
             &ldquo;Open-ended is a bigger problem than we need to solve today.&rdquo;
+          </p>
+          <p style={{ marginTop: "24px" }}>
+            There was also a side benefit we hadn&apos;t planned for. Because the report was now structured into sections rather than treated as one continuous canvas, that same structure made it straightforward to later support reports built from more than one object — something that hadn&apos;t been part of the original scope, but became possible almost naturally because of the sectioned architecture underneath it.
           </p>
         </div>
       </div>

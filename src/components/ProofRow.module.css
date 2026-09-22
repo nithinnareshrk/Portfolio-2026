@@ -1,0 +1,303 @@
+.section {
+  padding: 80px 80px;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-light, #e5e7eb);
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ── Section Header ── */
+.sectionHeader {
+  margin-bottom: 44px;
+  max-width: 100%;
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-size: var(--fs-caption, 11px);
+  font-weight: 700;
+  color: var(--accent-blue, #2563eb);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.headline {
+  font-size: var(--fs-h1, clamp(26px, 3.5vw, 38px));
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  letter-spacing: var(--ls-h1, -0.02em);
+  line-height: var(--lh-h1, 1.2);
+  margin: 0 0 12px 0;
+}
+
+.subheadline {
+  font-size: var(--fs-body, 16px);
+  color: var(--text-secondary, #6b7280);
+  line-height: var(--lh-body, 1.7);
+  max-width: 100%;
+  margin: 0;
+  font-weight: var(--fw-body, 400);
+  text-wrap: pretty;
+}
+
+/* ── 5 Cards Responsive Grid ── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.card {
+  border-radius: 14px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 236px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Distinct Visual Treatments Per Card ── */
+
+/* 01. Blue — 0 -> 1 Requirements to Production */
+.cardBlue {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.045) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.04);
+}
+.cardBlue:hover {
+  border-color: rgba(37, 99, 235, 0.38);
+  box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.16);
+}
+.cardBlue .iconBox {
+  background: rgba(37, 99, 235, 0.09);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  color: #2563eb;
+}
+
+/* 02. Amber — Core Enterprise Modules */
+.cardAmber {
+  background: linear-gradient(180deg, rgba(217, 119, 6, 0.045) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1px solid rgba(217, 119, 6, 0.16);
+  box-shadow: 0 2px 10px rgba(217, 119, 6, 0.04);
+}
+.cardAmber:hover {
+  border-color: rgba(217, 119, 6, 0.38);
+  box-shadow: 0 12px 28px -6px rgba(217, 119, 6, 0.16);
+}
+.cardAmber .iconBox {
+  background: rgba(217, 119, 6, 0.09);
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  color: #d97706;
+}
+
+/* 03. Emerald — Production Features Shipped */
+.cardEmerald {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.045) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.16);
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.04);
+}
+.cardEmerald:hover {
+  border-color: rgba(16, 185, 129, 0.38);
+  box-shadow: 0 12px 28px -6px rgba(16, 185, 129, 0.16);
+}
+.cardEmerald .iconBox {
+  background: rgba(16, 185, 129, 0.09);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+/* 04. Indigo — Platforms Unified */
+.cardIndigo {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.045) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.16);
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.04);
+}
+.cardIndigo:hover {
+  border-color: rgba(99, 102, 241, 0.38);
+  box-shadow: 0 12px 28px -6px rgba(99, 102, 241, 0.16);
+}
+.cardIndigo .iconBox {
+  background: rgba(99, 102, 241, 0.09);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  color: #6366f1;
+}
+
+/* 05. Navy — Startup Execution */
+.cardNavy {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04) 0%, rgba(255, 255, 255, 0.96) 100%);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+.cardNavy:hover {
+  border-color: rgba(15, 23, 42, 0.34);
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.16);
+}
+.cardNavy .iconBox {
+  background: rgba(15, 23, 42, 0.07);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+}
+
+/* ── Card Inner Elements ── */
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.iconBox {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Primary Stat / Value (Top prominence) */
+.statValue {
+  font-size: clamp(28px, 2.5vw, 34px);
+  font-weight: 800;
+  color: var(--text-primary, #111827);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-family: var(--font-manrope), sans-serif;
+  margin-bottom: 12px;
+}
+
+/* Label / Heading (Clear bold title) */
+.statHeading {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px 0;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+/* Caption / Subtext (Informative context) */
+.statCaption {
+  font-size: 13px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+/* ── Prefers Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 1200px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 60px 40px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .card:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 20px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .sectionHeader {
+    margin-bottom: 32px;
+  }
+
+  .headline {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .subheadline {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 580px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .card {
+    padding: 20px 16px;
+    min-height: auto;
+  }
+
+  .statValue {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .statHeading {
+    font-size: 14.5px;
+  }
+
+  .statCaption {
+    font-size: 12.5px;
+  }
+}

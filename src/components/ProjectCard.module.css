@@ -3,6 +3,11 @@
   flex-direction: column;
   gap: 40px;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .imageWrapper {
@@ -12,6 +17,10 @@
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--border-light);
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .portrait {
@@ -23,6 +32,8 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  pointer-events: none;
+  -webkit-touch-callout: none;
 }
 
 .card:hover .image {

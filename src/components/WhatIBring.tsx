@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ProjectThumbnail from './ProjectThumbnail';
 import {
   ArrowRight,
   Network,
@@ -128,13 +129,13 @@ const PILLARS: Pillar[] = [
       }
     ],
     caseStudy: {
-      title: 'Single Object Framework',
-      tag: 'Design System & Component Hierarchy',
+      title: 'Report Generator',
+      tag: 'Template System & Report Builder',
       href: '/works/single-object',
       image: '/images/works/Single Object thumbnail.jpg',
-      imageAlt: 'Single Object Framework',
+      imageAlt: 'Report Generator',
       reason:
-        'Architected a unified design token engine and component hierarchy powering 12+ enterprise suite applications.'
+        'Architected a structured template engine and modular section hierarchy empowering non-designers to create custom reports.'
     }
   },
   {
@@ -305,38 +306,45 @@ export default function WhatIBring() {
                 </div>
               </div>
 
-              <div className={styles.panelDivider} />
+              <div className={styles.bottomSection}>
+                <div className={styles.panelDivider} />
 
-              <div className={styles.appliedInBlock}>
-                <span className={styles.blockLabel}>APPLIED IN</span>
+                <div className={styles.appliedInBlock}>
+                  <span className={styles.blockLabel}>APPLIED IN</span>
 
-                <div className={styles.caseStudyCard}>
-                  <div className={styles.caseStudyImageWrapper}>
-                    <Image
-                      src={activePillar.caseStudy.image}
-                      alt={activePillar.caseStudy.imageAlt}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes='220px'
-                    />
-                  </div>
-                  <div className={styles.caseStudyContent}>
-                    <h4 className={styles.caseStudyTitle}>
-                      {activePillar.caseStudy.title}
-                    </h4>
-                    <span className={styles.caseStudyTagPill}>
-                      {activePillar.caseStudy.tag}
-                    </span>
-                    <p className={styles.caseStudyReason}>
-                      {activePillar.caseStudy.reason}
-                    </p>
+                  <div className={styles.caseStudyCard}>
                     <Link
                       href={activePillar.caseStudy.href}
-                      className={styles.caseStudyCta}
+                      className={styles.caseStudyImageLink}
+                      tabIndex={-1}
+                      aria-label={`View ${activePillar.caseStudy.title} Case Study`}
                     >
-                      <span>View Case Study</span>
-                      <ArrowRight size={14} className={styles.ctaArrow} />
+                      <div className={styles.caseStudyImageWrapper}>
+                        <ProjectThumbnail
+                          title={activePillar.caseStudy.title}
+                          imageUrl={activePillar.caseStudy.image}
+                          aspectRatio="fill"
+                        />
+                      </div>
                     </Link>
+                    <div className={styles.caseStudyContent}>
+                      <h4 className={styles.caseStudyTitle}>
+                        {activePillar.caseStudy.title}
+                      </h4>
+                      <span className={styles.caseStudyTagPill}>
+                        {activePillar.caseStudy.tag}
+                      </span>
+                      <p className={styles.caseStudyReason}>
+                        {activePillar.caseStudy.reason}
+                      </p>
+                      <Link
+                        href={activePillar.caseStudy.href}
+                        className={styles.caseStudyCta}
+                      >
+                        <span>View Case Study</span>
+                        <ArrowRight size={14} className={styles.ctaArrow} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -400,38 +408,45 @@ export default function WhatIBring() {
                 </div>
               </div>
 
-              <div className={styles.panelDivider} />
+              <div className={styles.bottomSection}>
+                <div className={styles.panelDivider} />
 
-              <div className={styles.appliedInBlock}>
-                <span className={styles.blockLabel}>APPLIED IN</span>
+                <div className={styles.appliedInBlock}>
+                  <span className={styles.blockLabel}>APPLIED IN</span>
 
-                <div className={styles.caseStudyCard}>
-                  <div className={styles.caseStudyImageWrapper}>
-                    <Image
-                      src={activePillar.caseStudy.image}
-                      alt={activePillar.caseStudy.imageAlt}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes='(max-width: 768px) 100vw, 300px'
-                    />
-                  </div>
-                  <div className={styles.caseStudyContent}>
-                    <h4 className={styles.caseStudyTitle}>
-                      {activePillar.caseStudy.title}
-                    </h4>
-                    <span className={styles.caseStudyTagPill}>
-                      {activePillar.caseStudy.tag}
-                    </span>
-                    <p className={styles.caseStudyReason}>
-                      {activePillar.caseStudy.reason}
-                    </p>
+                  <div className={styles.caseStudyCard}>
                     <Link
                       href={activePillar.caseStudy.href}
-                      className={styles.caseStudyCta}
+                      className={styles.caseStudyImageLink}
+                      tabIndex={-1}
+                      aria-label={`View ${activePillar.caseStudy.title} Case Study`}
                     >
-                      <span>View Case Study</span>
-                      <ArrowRight size={14} className={styles.ctaArrow} />
+                      <div className={styles.caseStudyImageWrapper}>
+                        <ProjectThumbnail
+                          title={activePillar.caseStudy.title}
+                          imageUrl={activePillar.caseStudy.image}
+                          aspectRatio="fill"
+                        />
+                      </div>
                     </Link>
+                    <div className={styles.caseStudyContent}>
+                      <h4 className={styles.caseStudyTitle}>
+                        {activePillar.caseStudy.title}
+                      </h4>
+                      <span className={styles.caseStudyTagPill}>
+                        {activePillar.caseStudy.tag}
+                      </span>
+                      <p className={styles.caseStudyReason}>
+                        {activePillar.caseStudy.reason}
+                      </p>
+                      <Link
+                        href={activePillar.caseStudy.href}
+                        className={styles.caseStudyCta}
+                      >
+                        <span>View Case Study</span>
+                        <ArrowRight size={14} className={styles.ctaArrow} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

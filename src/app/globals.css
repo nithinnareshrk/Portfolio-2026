@@ -112,7 +112,7 @@
   --ls-caption:    1.5px;
 
   /* Spacing Tokens */
-  --section-padding-y: 100px;
+  --section-padding-y: 80px;
 }
 
 *, *::before, *::after {
@@ -143,6 +143,18 @@ body {
   overflow-x: clip;
 }
 
+/* ── iOS WebKit & WebView Long-Press / Callout / Zoom Suppression ── */
+img,
+picture,
+video,
+canvas,
+svg {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
 button,
 a,
 input,
@@ -151,6 +163,17 @@ textarea,
 [role="button"] {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Ensure links wrapping image thumbnails don't trigger iOS WebKit action drawer */
+a img,
+button img,
+[role="button"] img {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

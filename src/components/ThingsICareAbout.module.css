@@ -1,5 +1,5 @@
 .section {
-  padding: 100px 80px;
+  padding: 80px 80px;
   background-color: var(--surface-warm, #f7f6f2);
   border-top: 1px solid var(--surface-warm-border, #e7e4dc);
   border-bottom: 1px solid var(--surface-warm-border, #e7e4dc);
@@ -340,6 +340,11 @@
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.04));
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .projectCard:hover {
@@ -351,9 +356,21 @@
 .projectImageWrapper {
   position: relative;
   width: 100%;
-  height: 190px;
-  background: #0f172a;
+  aspect-ratio: 2.1 / 1;
+  background: #0b172a;
   overflow: hidden;
+  border-radius: 13px 13px 0 0;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.projectImageWrapper > div {
+  border-radius: 13px 13px 0 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
 }
 
 .imageOverlay {
@@ -432,6 +449,11 @@
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-subtle, 0 1px 3px rgba(0, 0, 0, 0.04));
   flex: 1;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .projectCardCompact:hover {
@@ -442,10 +464,21 @@
 
 .projectImageWrapperCompact {
   position: relative;
-  width: 125px;
-  min-width: 125px;
-  background: #0f172a;
+  width: 130px;
+  min-width: 130px;
+  aspect-ratio: 1 / 1;
+  background: #0b172a;
   overflow: hidden;
+  border-radius: 13px 0 0 13px;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.projectImageWrapperCompact > div {
+  border-radius: 13px 0 0 13px;
+  border: none;
 }
 
 .projectCardBodyCompact {
@@ -652,6 +685,7 @@
   }
 
   .projectImageWrapper {
-    height: 180px;
+    height: auto;
+    aspect-ratio: 2.1 / 1;
   }
 }

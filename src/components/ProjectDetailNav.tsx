@@ -15,18 +15,6 @@ export interface ProjectItem {
 
 export const PORTFOLIO_PROJECTS: ProjectItem[] = [
   {
-    title: "Gear Guru",
-    category: "Marketplace / Automotive",
-    path: "/works/gear-guru",
-    markerColor: "#005BC4",
-  },
-  {
-    title: "Rehabilitation",
-    category: "Concept / Health Platform",
-    path: "/works/rehabilitation",
-    markerColor: "#005BC4",
-  },
-  {
     title: "Workflow-Driven T&M System",
     category: "Linarc Works / Workflow Heavy",
     path: "/works/tnm",
@@ -39,8 +27,8 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     markerColor: "#FF9201",
   },
   {
-    title: "Single Object",
-    category: "Linarc Works / Report Builder",
+    title: "Report Generator",
+    category: "Works / Report Builder",
     path: "/works/single-object",
     markerColor: "#FF9201",
   },
@@ -55,6 +43,18 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     category: "Linarc Works / Safety Execution",
     path: "/works/toolbox-talk",
     markerColor: "#FF9201",
+  },
+  {
+    title: "Rehabilitation",
+    category: "Concept / Health Platform",
+    path: "/works/rehabilitation",
+    markerColor: "#005BC4",
+  },
+  {
+    title: "Gear Guru",
+    category: "Marketplace / Automotive",
+    path: "/works/gear-guru",
+    markerColor: "#005BC4",
   },
 ];
 
