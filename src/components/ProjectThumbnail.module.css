@@ -18,6 +18,14 @@
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+.thumbnailWrapper,
+.thumbnailWrapper * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
 .thumbnailWrapper img {
   -webkit-touch-callout: none !important;
   -webkit-user-select: none !important;
@@ -120,15 +128,18 @@
   background-size: 20px 20px;
 }
 
-:global(.src-components-WorksProjectCard-module__card:hover) .radialGlow,
-.thumbnailWrapper:hover .radialGlow {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  :global(.src-components-WorksProjectCard-module__card:hover) .radialGlow,
+  .thumbnailWrapper:hover .radialGlow {
+    opacity: 1;
+  }
+
+  :global(.src-components-WorksProjectCard-module__card:hover) .lightSweep,
+  .thumbnailWrapper:hover .lightSweep {
+    transform: translateX(260%) skewX(-25deg);
+  }
 }
 
-:global(.src-components-WorksProjectCard-module__card:hover) .lightSweep,
-.thumbnailWrapper:hover .lightSweep {
-  transform: translateX(260%) skewX(-25deg);
-}
 
 /* ── 01. GEAR GURU COMPOSITION ── */
 .compositionGearGuru {
@@ -201,16 +212,19 @@
   z-index: 5;
 }
 
-:global(.src-components-WorksProjectCard-module__card:hover) .gearGuruBackPhone,
-.thumbnailWrapper:hover .gearGuruBackPhone {
-  transform: rotate(-8deg) translateY(-4px) scale(0.95);
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  :global(.src-components-WorksProjectCard-module__card:hover) .gearGuruBackPhone,
+  .thumbnailWrapper:hover .gearGuruBackPhone {
+    transform: rotate(-8deg) translateY(-4px) scale(0.95);
+    opacity: 1;
+  }
+
+  :global(.src-components-WorksProjectCard-module__card:hover) .gearGuruFrontPhone,
+  .thumbnailWrapper:hover .gearGuruFrontPhone {
+    transform: rotate(5deg) translateY(-6px) scale(1.03);
+  }
 }
 
-:global(.src-components-WorksProjectCard-module__card:hover) .gearGuruFrontPhone,
-.thumbnailWrapper:hover .gearGuruFrontPhone {
-  transform: rotate(5deg) translateY(-6px) scale(1.03);
-}
 
 /* ── 02. REHABILITATION COMPOSITION ── */
 .compositionRehab {
@@ -277,13 +291,16 @@
   box-shadow: 0 0 8px #60a5fa;
 }
 
-.thumbnailWrapper:hover .rehabCardLeft {
-  transform: translateY(-2px) rotate(-3deg) scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .rehabCardLeft {
+    transform: translateY(-2px) rotate(-3deg) scale(1.02);
+  }
+
+  .thumbnailWrapper:hover .rehabCardRight {
+    transform: translateY(-8px) rotate(3deg) scale(1.02);
+  }
 }
 
-.thumbnailWrapper:hover .rehabCardRight {
-  transform: translateY(-8px) rotate(3deg) scale(1.02);
-}
 
 /* ── 03. DESIGN SYSTEM COMPOSITION ── */
 .compositionDesignSystem {
@@ -375,10 +392,13 @@
   right: 18px;
 }
 
-.thumbnailWrapper:hover .dsSpecFrame {
-  transform: scale(1.03);
-  border-color: rgba(147, 197, 253, 0.6);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .dsSpecFrame {
+    transform: scale(1.03);
+    border-color: rgba(147, 197, 253, 0.6);
+  }
 }
+
 
 /* ── 04. T&M SYSTEM COMPOSITION ── */
 .compositionTnM {
@@ -446,14 +466,17 @@
   z-index: 4;
 }
 
-.thumbnailWrapper:hover .tnmMainFrame {
-  transform: translateY(-3px) scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .tnmMainFrame {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  .thumbnailWrapper:hover .tnmBackSheet {
+    transform: rotate(5deg) translateY(-2px);
+    opacity: 0.9;
+  }
 }
 
-.thumbnailWrapper:hover .tnmBackSheet {
-  transform: rotate(5deg) translateY(-2px);
-  opacity: 0.9;
-}
 
 /* ── 05. THE JOURNAL COMPOSITION ── */
 .compositionJournal {
@@ -507,13 +530,16 @@
   display: block;
 }
 
-.thumbnailWrapper:hover .journalCardPrimary {
-  transform: translateX(10px) translateY(-6px) scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .journalCardPrimary {
+    transform: translateX(10px) translateY(-6px) scale(1.02);
+  }
+
+  .thumbnailWrapper:hover .journalCardSecondary {
+    transform: translateY(0px) rotate(-5deg);
+  }
 }
 
-.thumbnailWrapper:hover .journalCardSecondary {
-  transform: translateY(0px) rotate(-5deg);
-}
 
 /* ── 06. SINGLE OBJECT COMPOSITION ── */
 .compositionSingleObject {
@@ -567,9 +593,12 @@
   display: block;
 }
 
-.thumbnailWrapper:hover .soEditorMain {
-  transform: translateX(14px) translateY(-3px) scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .soEditorMain {
+    transform: translateX(14px) translateY(-3px) scale(1.02);
+  }
 }
+
 
 /* ── 07. MARKETPLACE COMPOSITION ── */
 .compositionMarketplace {
@@ -623,9 +652,12 @@
   display: block;
 }
 
-.thumbnailWrapper:hover .mpEcosystemMain {
-  transform: translateX(-10px) translateY(-6px) scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .mpEcosystemMain {
+    transform: translateX(-10px) translateY(-6px) scale(1.02);
+  }
 }
+
 
 /* ── 08. TOOLBOX TALK COMPOSITION ── */
 .compositionToolbox {
@@ -679,12 +711,14 @@
   object-fit: cover;
 }
 
-.thumbnailWrapper:hover .toolboxWebMain {
-  transform: translateX(-10px) translateY(-4px) scale(1.015);
-}
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .toolboxWebMain {
+    transform: translateX(-10px) translateY(-4px) scale(1.015);
+  }
 
-.thumbnailWrapper:hover .toolboxMobileFloating {
-  transform: translateY(-4px) rotate(5deg) scale(1.05);
+  .thumbnailWrapper:hover .toolboxMobileFloating {
+    transform: translateY(-4px) rotate(5deg) scale(1.05);
+  }
 }
 
 /* ── DEFAULT FALLBACK COMPOSITION ── */
@@ -704,9 +738,12 @@
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.thumbnailWrapper:hover .defaultImg {
-  transform: scale(1.03);
+@media (hover: hover) and (pointer: fine) {
+  .thumbnailWrapper:hover .defaultImg {
+    transform: scale(1.03);
+  }
 }
+
 
 /* ── CONTAINER QUERIES FOR COMPACT CONTAINERS (e.g. OVERVIEW PAGE) ── */
 @container (max-width: 280px) {

@@ -13,6 +13,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.card,
+.card * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
 .imageContainer {
   position: relative;
   width: 100%;
@@ -30,10 +38,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.card:hover .imageContainer {
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18), 0 0 24px rgba(37, 99, 235, 0.2);
-}
-
 .imageContainerSquare {
   aspect-ratio: 1 / 1;
 }
@@ -46,11 +50,23 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-.card:hover .image {
-  transform: scale(1.02);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .imageContainer {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18), 0 0 24px rgba(37, 99, 235, 0.2);
+  }
+
+  .card:hover .image {
+    transform: scale(1.02);
+  }
 }
+
+
 
 .contentRow {
   display: flex;
@@ -146,16 +162,24 @@
   transition: transform 0.2s ease;
 }
 
-.card:hover .ctaArrow {
-  transform: translateX(3px);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .ctaArrow {
+    transform: translateX(3px);
+  }
+
+  .card:hover .ctaButton {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+  }
 }
 
-.card:hover .ctaButton,
 .card:active .ctaButton {
   background: #2563eb;
   border-color: #2563eb;
   color: #ffffff;
 }
+
 
 /* Desktop: No button needed on large display editorial cards */
 @media (min-width: 1201px) {

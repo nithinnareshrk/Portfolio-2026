@@ -103,7 +103,21 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 56px 36px;
+  touch-action: pan-y;
 }
+
+.gridItem {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 
 /* Desktop Asymmetric Alternating Grid */
 @media (min-width: 1201px) {

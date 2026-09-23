@@ -29,8 +29,34 @@ interface CareTheme {
 
 const THEMES: CareTheme[] = [
   {
-    id: 'clarity',
+    id: 'people',
     number: '01',
+    title: 'People',
+    subtitle: 'Empathy & cognitive relief',
+    icon: <Heart size={18} strokeWidth={2.2} />,
+    coreStatement: 'Designing for human circumstances, emotional states, and cognitive relief.',
+    explanation:
+      'Design is fundamentally about understanding people—their physical limitations, stress levels, and emotional contexts. In rehabilitation, individuals are navigating discomfort, fatigue, and recovery uncertainty. Rather than treating users as clinical data points, design should create a calm, predictable environment with generous spacing, clear hierarchy, and unhurried progression that builds confidence step by step.',
+    focusPoints: [
+      'Empathetic cognitive pacing with reduced interface density',
+      'Clear structuring of guided exercise routines and rest intervals',
+      'Calm visual feedback over intimidating clinical metrics'
+    ],
+    projects: [
+      {
+        tag: 'Virtual Recovery — Health & Wellness',
+        title: 'Virtual Recovery & Rehabilitation',
+        href: '/works/rehabilitation',
+        image: '/images/works/Rehab Thumbnail.jpg',
+        imageAlt: 'Virtual Recovery and Rehabilitation Case Study',
+        summary:
+          'An early design exploration structuring guided physical therapy, pain reporting, and recovery milestones into a reassuring, low-friction mobile experience.'
+      }
+    ]
+  },
+  {
+    id: 'clarity',
+    number: '02',
     title: 'Clarity',
     subtitle: 'Structured operational flow',
     icon: <Layers size={18} strokeWidth={2.2} />,
@@ -56,7 +82,7 @@ const THEMES: CareTheme[] = [
   },
   {
     id: 'business',
-    number: '02',
+    number: '03',
     title: 'Business',
     subtitle: 'Operational transparency',
     icon: <Building2 size={18} strokeWidth={2.2} />,
@@ -79,37 +105,12 @@ const THEMES: CareTheme[] = [
           'Digitizing contractor tracking and multi-tier approval chains into a structured field management workflow.'
       }
     ]
-  },
-  {
-    id: 'people',
-    number: '03',
-    title: 'People',
-    subtitle: 'Empathy & cognitive relief',
-    icon: <Heart size={18} strokeWidth={2.2} />,
-    coreStatement: 'Designing for human circumstances, emotional states, and cognitive relief.',
-    explanation:
-      'Design is fundamentally about understanding people—their physical limitations, stress levels, and emotional contexts. In rehabilitation, individuals are navigating discomfort, fatigue, and recovery uncertainty. Rather than treating users as clinical data points, design should create a calm, predictable environment with generous spacing, clear hierarchy, and unhurried progression that builds confidence step by step.',
-    focusPoints: [
-      'Empathetic cognitive pacing with reduced interface density',
-      'Clear structuring of guided exercise routines and rest intervals',
-      'Calm visual feedback over intimidating clinical metrics'
-    ],
-    projects: [
-      {
-        tag: 'Virtual Recovery — Health & Wellness',
-        title: 'Virtual Recovery & Rehabilitation',
-        href: '/works/rehabilitation',
-        image: '/images/works/Rehab Thumbnail.jpg',
-        imageAlt: 'Virtual Recovery and Rehabilitation Case Study',
-        summary:
-          'An early design exploration structuring guided physical therapy, pain reporting, and recovery milestones into a reassuring, low-friction mobile experience.'
-      }
-    ]
   }
 ];
 
 export default function ThingsICareAbout() {
-  const [activeThemeId, setActiveThemeId] = useState<string | null>('clarity');
+  const [activeThemeId, setActiveThemeId] = useState<string | null>('people');
+
 
   const activeTheme = THEMES.find((t) => t.id === activeThemeId) || THEMES[0];
 
