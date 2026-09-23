@@ -53,7 +53,7 @@ export default function ResumeModal() {
                 <span className={styles.badge}>PDF</span>
               </div>
               <p className={styles.docMeta}>
-                Product Designer • B2B SaaS • Updated 2026 • 1.06 MB
+                Product Designer • B2B SaaS • Updated 2026 • 1.08 MB
               </p>
             </div>
           </div>
@@ -141,7 +141,7 @@ export default function ResumeModal() {
           </div>
           <div className={styles.sheetTitleGroup}>
             <h3 className={styles.sheetTitle}>Nithinnaresh — Resume</h3>
-            <p className={styles.sheetSub}>PDF Document • Product Designer • 1.06 MB</p>
+            <p className={styles.sheetSub}>PDF Document • Product Designer • 1.08 MB</p>
           </div>
         </div>
 
@@ -187,7 +187,7 @@ export default function ResumeModal() {
           <ul className={styles.highlightList}>
             <li className={styles.highlightItem}>
               <span className={styles.bulletDot} />
-              <span><strong>Linarc</strong>: Led end-to-end design for 6+ interconnected B2B SaaS modules (Safety, Equipment, Single Object, Journal, T&M).</span>
+              <span><strong>Linarc</strong>: Led end-to-end design for 6+ interconnected B2B SaaS modules (Safety, Equipment Management, Single & multi-object report generator (editor), and Checklists).</span>
             </li>
             <li className={styles.highlightItem}>
               <span className={styles.bulletDot} />

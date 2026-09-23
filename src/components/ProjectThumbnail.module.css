@@ -11,6 +11,7 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+  -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   isolation: isolate;
@@ -23,6 +24,7 @@
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-user-drag: none;
   touch-action: manipulation;
 }
 
@@ -30,12 +32,25 @@
   -webkit-touch-callout: none !important;
   -webkit-user-select: none !important;
   user-select: none !important;
+  -webkit-user-drag: none !important;
   touch-action: manipulation !important;
   pointer-events: none;
 }
 
 .aspectWide {
   aspect-ratio: 2.1 / 1;
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .aspectWide {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 768px) {
+  .aspectWide {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .aspectSquare {
@@ -596,6 +611,10 @@
 @media (hover: hover) and (pointer: fine) {
   .thumbnailWrapper:hover .soEditorMain {
     transform: translateX(14px) translateY(-3px) scale(1.02);
+  }
+
+  .thumbnailWrapper:hover .soWorkflowSide {
+    transform: translateY(0px) rotate(-4deg);
   }
 }
 

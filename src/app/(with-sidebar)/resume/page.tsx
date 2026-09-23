@@ -15,7 +15,7 @@ const EXPERIENCE = [
     period: "Sep 2024 – Dec 2025",
     location: "Chennai, Tamil Nadu",
     bullets: [
-      "Led end-to-end design for 6+ interconnected B2B SaaS modules including Safety, Equipment Management, Single Object, and Checklists.",
+      "Led end-to-end design for 6+ interconnected B2B SaaS modules including Safety, Equipment Management, Single & multi-object report generator (editor), and Checklists.",
       "Mapped ambiguous operational workflows into documented IA and interaction specs before handoff, reducing mid-development design clarifications across 6+ modules.",
       "Established reusable UI patterns (20+ components) and foundational design logic to support cross-module scalability.",
       "Facilitated stakeholder workshops to surface conflicting requirements early, aligning product, design, and engineering on feature scope before development began.",
@@ -66,7 +66,7 @@ export default function ResumePage() {
               Nithinnaresh <span className={styles.roleHighlight}>R K</span>
             </h1>
             <p className={styles.summary}>
-              Product Designer specializing in workflow-heavy B2B SaaS platforms. Experienced in structuring ambiguous operational problems into scalable systems, reusable interaction patterns, and cross-module product experiences.
+              Product Designer specializing in workflow-heavy B2B SaaS platforms. Experienced in structuring ambiguous operational problems into scalable systems, reusable interaction patterns, and cross-module product experiences. Specializes in making complex operational workflows feel simple — particularly in construction and enterprise SaaS contexts where user cognitive load is high.
             </p>
           </div>
 

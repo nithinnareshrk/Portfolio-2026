@@ -1185,17 +1185,24 @@
 .tagsGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .usageTag {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  padding: 10px 16px;
+  padding: 8px 14px;
   border-radius: 8px;
-  border-radius: 6px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-family: var(--font-satoshi);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #334155;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .toolCardTitle {

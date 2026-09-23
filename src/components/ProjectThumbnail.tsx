@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./ProjectThumbnail.module.css";
 
 interface ProjectThumbnailProps {
@@ -15,6 +15,8 @@ export default function ProjectThumbnail({
   aspectRatio = "wide",
 }: ProjectThumbnailProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ time: number; x: number; y: number } | null>(null);
+  const isLongPressRef = useRef(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -25,6 +27,76 @@ export default function ProjectThumbnail({
     containerRef.current.style.setProperty("--mouse-y", `${y.toFixed(1)}%`);
   };
 
+  const handleMouseLeave = () => {
+    if (!containerRef.current) return;
+    containerRef.current.style.removeProperty("--mouse-x");
+    containerRef.current.style.removeProperty("--mouse-y");
+  };
+
+  // Prevent iOS native lift and accidental navigation on long-press
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0];
+    touchStartRef.current = {
+      time: Date.now(),
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+    isLongPressRef.current = false;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchStartRef.current) return;
+    const touch = e.touches[0];
+    const dx = Math.abs(touch.clientX - touchStartRef.current.x);
+    const dy = Math.abs(touch.clientY - touchStartRef.current.y);
+    // If finger moves more than 10px, it's a scroll gesture - cancel long-press tracking
+    if (dx > 10 || dy > 10) {
+      touchStartRef.current = null;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartRef.current) {
+      const elapsed = Date.now() - touchStartRef.current.time;
+      if (elapsed >= 500) {
+        // Held for >= 500ms without scrolling -> mark as long-press
+        isLongPressRef.current = true;
+      }
+    }
+    touchStartRef.current = null;
+  };
+
+  const handleClickCapture = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isLongPressRef.current) {
+      // Long press release must NOT trigger project navigation
+      e.preventDefault();
+      e.stopPropagation();
+      isLongPressRef.current = false;
+    }
+  };
+
+  // Restore normal resting state on orientation change, viewport resize, or bfcache navigation
+  useEffect(() => {
+    const handleReset = () => {
+      touchStartRef.current = null;
+      isLongPressRef.current = false;
+      if (containerRef.current) {
+        containerRef.current.style.removeProperty("--mouse-x");
+        containerRef.current.style.removeProperty("--mouse-y");
+      }
+    };
+
+    window.addEventListener("orientationchange", handleReset);
+    window.addEventListener("resize", handleReset);
+    window.addEventListener("pageshow", handleReset);
+
+    return () => {
+      window.removeEventListener("orientationchange", handleReset);
+      window.removeEventListener("resize", handleReset);
+      window.removeEventListener("pageshow", handleReset);
+    };
+  }, []);
+
   const normalizedTitle = title.toLowerCase().trim();
 
   const isGearGuru = normalizedTitle.includes("gear guru") || normalizedTitle.includes("gearguru");
@@ -32,7 +104,7 @@ export default function ProjectThumbnail({
   const isDesignSystem = normalizedTitle.includes("design system");
   const isTnM = normalizedTitle.includes("t&m") || normalizedTitle.includes("time & material") || normalizedTitle.includes("time and material");
   const isJournal = normalizedTitle.includes("journal");
-  const isSingleObject = normalizedTitle.includes("single object");
+  const isSingleObject = normalizedTitle.includes("single object") || normalizedTitle.includes("report");
   const isMarketplace = normalizedTitle.includes("market");
   const isToolbox = normalizedTitle.includes("toolbox") || normalizedTitle.includes("safty") || normalizedTitle.includes("safety");
 
@@ -59,6 +131,18 @@ export default function ProjectThumbnail({
       ref={containerRef}
       className={`${styles.thumbnailWrapper} ${variantClass} ${aspectClass}`}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={() => {
+        touchStartRef.current = null;
+        isLongPressRef.current = false;
+      }}
+      onClickCapture={handleClickCapture}
+      onContextMenu={(e) => e.preventDefault()}
+      draggable={false}
+      onDragStart={(e) => e.preventDefault()}
     >
       {/* Interactive blue radial glow & sweep */}
       <div className={styles.radialGlow} aria-hidden="true" />

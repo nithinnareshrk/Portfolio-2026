@@ -23,7 +23,6 @@ import {
   Terminal,
   Zap,
   Send,
-  CheckCircle2,
   Tv,
   Music as MusicIcon,
   Globe,
@@ -913,10 +912,9 @@ export default function AboutPage() {
 
               <div className={styles.tagsGrid}>
                 {activeTool.tags.map((tag, idx) => (
-                  <div key={idx} className={styles.usageTag}>
-                    <CheckCircle2 size={14} color="#2563eb" />
-                    <span>{tag}</span>
-                  </div>
+                  <span key={idx} className={styles.usageTag}>
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import ProjectThumbnail from "./ProjectThumbnail";
 import styles from "./WorksProjectCard.module.css";
@@ -25,8 +27,62 @@ export default function WorksProjectCard({
   aspectRatio = "wide",
   external = false,
 }: WorksProjectCardProps) {
+  const touchStartRef = useRef<{ time: number; x: number; y: number } | null>(null);
+  const isLongPressRef = useRef(false);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0];
+    touchStartRef.current = {
+      time: Date.now(),
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+    isLongPressRef.current = false;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchStartRef.current) return;
+    const touch = e.touches[0];
+    const dx = Math.abs(touch.clientX - touchStartRef.current.x);
+    const dy = Math.abs(touch.clientY - touchStartRef.current.y);
+    if (dx > 10 || dy > 10) {
+      touchStartRef.current = null;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartRef.current) {
+      const elapsed = Date.now() - touchStartRef.current.time;
+      if (elapsed >= 500) {
+        isLongPressRef.current = true;
+      }
+    }
+    touchStartRef.current = null;
+  };
+
+  const handleClickCapture = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isLongPressRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      isLongPressRef.current = false;
+    }
+  };
+
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      draggable={false}
+      onDragStart={(e) => e.preventDefault()}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={() => {
+        touchStartRef.current = null;
+        isLongPressRef.current = false;
+      }}
+      onClickCapture={handleClickCapture}
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <div
         className={`${styles.imageContainer} ${aspectRatio === "square" ? styles.imageContainerSquare : ""}`}
       >

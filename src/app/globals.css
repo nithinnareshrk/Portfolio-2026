@@ -122,6 +122,8 @@
 }
 
 html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   scroll-behavior: smooth;
   overflow-x: clip;
 }
@@ -152,6 +154,7 @@ svg {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-user-drag: none;
   touch-action: manipulation;
 }
 
@@ -164,9 +167,10 @@ textarea,
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  -webkit-user-drag: none;
 }
 
-/* Ensure links wrapping image thumbnails don't trigger iOS WebKit action drawer */
+/* Ensure links wrapping image thumbnails don't trigger iOS WebKit action drawer or lift */
 a img,
 button img,
 [role="button"] img {
@@ -174,6 +178,7 @@ button img,
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

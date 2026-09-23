@@ -118,25 +118,40 @@ export default function WorksPage() {
     return safeGetItem(SS_FILTER) ?? "ALL PROJECTS";
   });
 
-  // ── Restore scroll position after paint ───────────────
+  // ── Restore scroll position after paint & reset stuck focus/hover ───
   useEffect(() => {
-    if (scrollRestoredRef.current) return;
-    scrollRestoredRef.current = true;
+    const handleResetFocus = () => {
+      if (document.activeElement && document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    };
 
-    const savedY = safeGetItem(SS_SCROLL);
-    if (savedY !== null) {
-      requestAnimationFrame(() => {
+    window.addEventListener("pageshow", handleResetFocus);
+    window.addEventListener("orientationchange", handleResetFocus);
+
+    if (!scrollRestoredRef.current) {
+      scrollRestoredRef.current = true;
+
+      const savedY = safeGetItem(SS_SCROLL);
+      if (savedY !== null) {
         requestAnimationFrame(() => {
-          window.scrollTo({ top: parseInt(savedY, 10), behavior: "auto" });
-          safeRemoveItem(SS_SCROLL);
-          safeRemoveItem(SS_FILTER);
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: parseInt(savedY, 10), behavior: "auto" });
+            safeRemoveItem(SS_SCROLL);
+            safeRemoveItem(SS_FILTER);
+          });
         });
-      });
+      }
     }
+
+    return () => {
+      window.removeEventListener("pageshow", handleResetFocus);
+      window.removeEventListener("orientationchange", handleResetFocus);
+    };
   }, []);
 
   // ── Save state before navigating to a detail page ─────
-  const handleCardClick = useCallback((link: string) => {
+  const handleCardClick = useCallback((_link?: string) => {
     safeSetItem(SS_FILTER, activeFilter);
     safeSetItem(SS_SCROLL, String(Math.round(window.scrollY)));
   }, [activeFilter]);
@@ -187,6 +202,8 @@ export default function WorksPage() {
                   href={work.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
                   className={styles.gridItem}
                   style={{ textDecoration: "none", color: "inherit", display: "block" }}
                   aria-label={`${work.title} (opens in new tab)`}
@@ -210,6 +227,8 @@ export default function WorksPage() {
               <Link
                 key={work.title}
                 href={work.link}
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
                 onClick={() => handleCardClick(work.link)}
                 className={styles.gridItem}
                 style={{ textDecoration: "none", color: "inherit", display: "block" }}
