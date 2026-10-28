@@ -12,7 +12,7 @@ const SS_SCROLL = "works_scrollY";
 
 const WORKS_DATA = [
   {
-    title: "Workflow-Driven T&M System",
+    title: "Time & Material Tickets",
     description: "A streamlined T&M workflow that simplifies site tracking, approvals, and reporting across teams.",
     imageUrl: "/images/works/T&M thumbnail.jpg",
     link: "/works/tnm",
@@ -21,8 +21,8 @@ const WORKS_DATA = [
     category: "LINARC WORKS",
   },
   {
-    title: "The Journal",
-    description: "A unified Journal workflow that centralizes daily site updates, tracking, and reporting for better visibility and control.",
+    title: "Daily Site Log",
+    description: "A unified daily site log that centralizes daily site updates, tracking, and reporting for better visibility and control.",
     imageUrl: "/images/works/Journal Thumbnail.jpg",
     link: "/works/journal",
     tags: ["LINARC WORKS", "WEB & MOBILE"],
@@ -83,6 +83,15 @@ const WORKS_DATA = [
     link: "/works/gear-guru",
     tags: ["PERSONAL PROJECT", "CASE STUDY", "2024"],
     markerColor: "#005BC4",
+    category: "PERSONAL PROJECTS",
+  },
+  {
+    title: "RupeTap",
+    description: "A self-initiated concept for tap-to-pay on a shopkeeper's own phone in India.",
+    imageUrl: "/images/rupetap/hero-merchant-tap.svg",
+    link: "/works/rupetap",
+    tags: ["PERSONAL PROJECT", "CONCEPT", "TAP TO PAY"],
+    markerColor: "#059669",
     category: "PERSONAL PROJECTS",
   },
 ];

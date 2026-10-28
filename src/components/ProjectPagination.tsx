@@ -14,13 +14,13 @@ interface ProjectNavItem {
 
 const CASE_STUDIES: ProjectNavItem[] = [
   {
-    title: 'Workflow-Driven T&M System',
+    title: 'Time & Material Tickets',
     category: 'Linarc Works / Workflow Heavy',
     path: '/works/tnm',
     markerColor: '#FF9201',
   },
   {
-    title: 'The Journal',
+    title: 'Daily Site Log',
     category: 'Linarc Works / Daily Site Log',
     path: '/works/journal',
     markerColor: '#FF9201',
@@ -54,6 +54,12 @@ const CASE_STUDIES: ProjectNavItem[] = [
     category: 'Marketplace / Automotive',
     path: '/works/gear-guru',
     markerColor: '#005BC4',
+  },
+  {
+    title: 'RupeTap',
+    category: 'Concept / Tap to Pay',
+    path: '/works/rupetap',
+    markerColor: '#059669',
   },
 ];
 
