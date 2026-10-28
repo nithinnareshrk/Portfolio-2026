@@ -62,7 +62,7 @@ const THEMES: CareTheme[] = [
     icon: <Layers size={18} strokeWidth={2.2} />,
     coreStatement: 'Transforming complex, high-velocity information into actionable records.',
     explanation:
-      'In high-velocity field operations, information overload leads to missed details and costly operational mistakes. Clarity means organizing dense streams of daily activity into an intuitive chronological structure. By structuring field notes, weather impacts, safety flags, and photo evidence into a clear hierarchy, the Journal ensures teams immediately understand what happened on site and what needs attention next.',
+      'In high-velocity field operations, information overload leads to missed details and costly operational mistakes. Clarity means organizing dense streams of daily activity into an intuitive chronological structure. By structuring field notes, weather impacts, safety flags, and photo evidence into a clear hierarchy, the Daily Site Log ensures teams immediately understand what happened on site and what needs attention next.',
     focusPoints: [
       'Transforming scattered field updates into unified daily logs',
       'Clear chronological timeline and explainable delay tagging',
@@ -70,11 +70,11 @@ const THEMES: CareTheme[] = [
     ],
     projects: [
       {
-        tag: 'Daily Site Journal — Field Ops',
-        title: 'The Daily Site Journal',
+        tag: 'Daily Site Log — Field Ops',
+        title: 'Daily Site Log',
         href: '/works/journal',
         image: '/images/works/Journal Thumbnail.jpg',
-        imageAlt: 'The Daily Site Journal Case Study',
+        imageAlt: 'Daily Site Log Case Study',
         summary:
           'Structuring scattered daily logs, contractor notes, and delay evidence into one clean, actionable record of what happened on site.'
       }
@@ -96,11 +96,11 @@ const THEMES: CareTheme[] = [
     ],
     projects: [
       {
-        tag: 'T&M — Linarc',
-        title: 'T&M — Linarc',
+        tag: 'Time & Material Tickets',
+        title: 'Time & Material Tickets',
         href: '/works/tnm',
         image: '/images/works/T&M thumbnail.jpg',
-        imageAlt: 'T&M — Linarc Case Study',
+        imageAlt: 'Time & Material Tickets Case Study',
         summary:
           'Digitizing contractor tracking and multi-tier approval chains into a structured field management workflow.'
       }

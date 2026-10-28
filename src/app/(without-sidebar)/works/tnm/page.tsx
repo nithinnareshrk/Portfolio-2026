@@ -40,7 +40,7 @@ export default function TandMPage() {
           </div>
 
           <h1 className={styles.heroTitle}>
-            Designing a T&amp;M workflow that connects field work to project control
+            Time &amp; Material Tickets — Connecting Field Work to Project Control
           </h1>
 
           <p className={styles.heroAccent}>

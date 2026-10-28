@@ -172,11 +172,11 @@ const PILLARS: Pillar[] = [
       }
     ],
     caseStudy: {
-      title: 'Time & Materials Tracking',
+      title: 'Time & Material Tickets',
       tag: 'Enterprise SaaS Approval Workflow',
       href: '/works/tnm',
       image: '/images/works/T&M thumbnail.jpg',
-      imageAlt: 'Time & Materials Tracking System',
+      imageAlt: 'Time & Material Tickets System',
       reason:
         'Transformed paper-heavy contractor site logs into a structured multi-role approval system with real-time field tracking.'
     }
