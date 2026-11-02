@@ -227,6 +227,7 @@ const MERCHANT_SCREENS = [
 ];
 
 export default function RupeTapPage() {
+  const [activeFlowTab, setActiveFlowTab] = useState<"customer" | "merchant">("customer");
   const [activeGalleryTab, setActiveGalleryTab] = useState<"customer" | "merchant">("customer");
   const [isAllScreensModalOpen, setIsAllScreensModalOpen] = useState(false);
 
@@ -425,98 +426,251 @@ export default function RupeTapPage() {
             </div>
           </div>
 
-          {/* 4 Customer Flows Diagram */}
+          {/* Customer & Merchant Flows Diagram */}
           <div className={styles.flowsDiagram}>
             <div className={styles.flowsDiagramHeader}>
-              <div className={styles.flowsDiagramTitle}>The Four Customer Flows</div>
-              <div className={styles.flowsDiagramSubtitle}>
-                Structured paths covering setup, normal use, network disruption, and failure resolution.
+              <div>
+                <div className={styles.flowsDiagramTitle}>The Flows</div>
+                <div className={styles.flowsDiagramSubtitle}>
+                  {activeFlowTab === "customer"
+                    ? "Structured paths covering setup, normal use, network disruption, and failure resolution."
+                    : "Structured paths covering setup, normal use, network disruption, failure resolution, and device recovery."}
+                </div>
+              </div>
+
+              <div className={styles.galleryTabs} role="tablist" aria-label="Select app flows">
+                <button
+                  type="button"
+                  role="tab"
+                  id="flow-tab-customer"
+                  aria-selected={activeFlowTab === "customer"}
+                  aria-controls="flow-panel-customer"
+                  tabIndex={activeFlowTab === "customer" ? 0 : -1}
+                  className={`${styles.galleryTabBtn} ${activeFlowTab === "customer" ? styles.galleryTabBtnActive : ""}`}
+                  onClick={() => setActiveFlowTab("customer")}
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+                      e.preventDefault();
+                      setActiveFlowTab("merchant");
+                      document.getElementById("flow-tab-merchant")?.focus();
+                    }
+                  }}
+                >
+                  Customer
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="flow-tab-merchant"
+                  aria-selected={activeFlowTab === "merchant"}
+                  aria-controls="flow-panel-merchant"
+                  tabIndex={activeFlowTab === "merchant" ? 0 : -1}
+                  className={`${styles.galleryTabBtn} ${activeFlowTab === "merchant" ? styles.galleryTabBtnActive : ""}`}
+                  onClick={() => setActiveFlowTab("merchant")}
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+                      e.preventDefault();
+                      setActiveFlowTab("customer");
+                      document.getElementById("flow-tab-customer")?.focus();
+                    }
+                  }}
+                >
+                  Merchant
+                </button>
               </div>
             </div>
 
-            <div className={styles.flowRow}>
-              {/* Flow 1: Onboarding */}
-              <div className={styles.flowTrack}>
-                <div className={styles.flowTrackTop}>
-                  <strong style={{ fontSize: "14px", color: "#111827" }}>1. Onboarding</strong>
-                  <span className={`${styles.flowTrackBadge} ${styles.badgeOnboarding}`}>First-Time Setup</span>
+            {activeFlowTab === "customer" ? (
+              <div className={styles.flowRow} role="tabpanel" id="flow-panel-customer" aria-labelledby="flow-tab-customer">
+                {/* Flow 1: Onboarding */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>1. Onboarding</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeOnboarding}`}>First-Time Setup</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>App Launch</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Bank Discovery</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Hardware NFC Check</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Add Card</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Contactless Bank Check</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Ready to Tap</span>
+                  </div>
                 </div>
-                <div className={styles.flowTrackNodes}>
-                  <span className={styles.flowNode}>App Launch</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Bank Discovery</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Hardware NFC Check</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Add Card</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Contactless Bank Check</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Ready to Tap</span>
-                </div>
-              </div>
 
-              {/* Flow 2: Happy path */}
-              <div className={styles.flowTrack}>
-                <div className={styles.flowTrackTop}>
-                  <strong style={{ fontSize: "14px", color: "#111827" }}>2. Happy Path</strong>
-                  <span className={`${styles.flowTrackBadge} ${styles.badgeHappy}`}>Standard Tap</span>
+                {/* Flow 2: Happy path */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>2. Happy Path</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeHappy}`}>Standard Tap</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Home (Tap Hero)</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Floating Tap Overlay</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Phone / Card Tap</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Instant Haptic Confirm</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Full Success + Verified Badge</span>
+                  </div>
                 </div>
-                <div className={styles.flowTrackNodes}>
-                  <span className={styles.flowNode}>Home (Tap Hero)</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Floating Tap Overlay</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Phone / Card Tap</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Instant Haptic Confirm</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Full Success + Verified Badge</span>
-                </div>
-              </div>
 
-              {/* Flow 3: Critical path */}
-              <div className={styles.flowTrack}>
-                <div className={styles.flowTrackTop}>
-                  <strong style={{ fontSize: "14px", color: "#111827" }}>3. Critical Path</strong>
-                  <span className={`${styles.flowTrackBadge} ${styles.badgeCritical}`}>Network Drop Mid-Tap</span>
+                {/* Flow 3: Critical path */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>3. Critical Path</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeCritical}`}>Network Drop Mid-Tap</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Tap Registered</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode} style={{ borderColor: "#f59e0b", color: "#b45309" }}>Connection Drops</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>&ldquo;Checking, don&apos;t tap again&rdquo;</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode} style={{ borderColor: "#ef4444" }}>Card Switching Locked</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Background Poll Resolves</span>
+                  </div>
                 </div>
-                <div className={styles.flowTrackNodes}>
-                  <span className={styles.flowNode}>Tap Registered</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode} style={{ borderColor: "#f59e0b", color: "#b45309" }}>Connection Drops</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>&ldquo;Checking, don&apos;t tap again&rdquo;</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode} style={{ borderColor: "#ef4444" }}>Card Switching Locked</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Background Poll Resolves</span>
-                </div>
-              </div>
 
-              {/* Flow 4: Unhappy path */}
-              <div className={styles.flowTrack}>
-                <div className={styles.flowTrackTop}>
-                  <strong style={{ fontSize: "14px", color: "#111827" }}>4. Unhappy Path</strong>
-                  <span className={`${styles.flowTrackBadge} ${styles.badgeUnhappy}`}>Declined / Failed</span>
-                </div>
-                <div className={styles.flowTrackNodes}>
-                  <span className={styles.flowNode}>Tap Processed</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode} style={{ borderColor: "#ef4444", color: "#b91c1c" }}>Bank Decline</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Specific Reason Displayed</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Account Safe Notice</span>
-                  <span className={styles.flowArrow}>→</span>
-                  <span className={styles.flowNode}>Inline &ldquo;Switch Card&rdquo; Active</span>
+                {/* Flow 4: Unhappy path */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>4. Unhappy Path</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeUnhappy}`}>Declined / Failed</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Tap Processed</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode} style={{ borderColor: "#ef4444", color: "#b91c1c" }}>Bank Decline</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Specific Reason Displayed</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Account Safe Notice</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Inline &ldquo;Switch Card&rdquo; Active</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className={styles.flowRow} role="tabpanel" id="flow-panel-merchant" aria-labelledby="flow-tab-merchant">
+                {/* Merchant Flow 1: Onboarding & Verification */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>1. Onboarding &amp; Verification</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeOnboarding}`}>SETUP</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Mobile + OTP</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Phone Check</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Business Details</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>PAN + Identity</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Settlement Account</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Under Review</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Verified, Terminal Ready</span>
+                  </div>
+                </div>
+
+                {/* Merchant Flow 2: Happy Path */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>2. Happy Path</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeHappy}`}>STANDARD TAP</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Amount Entered</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Receive</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Tap Overlay, Ready</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Tap Detected</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>&ldquo;Confirming. Don&apos;t hand over goods yet&rdquo;</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Payment Received</span>
+                  </div>
+                </div>
+
+                {/* Merchant Flow 3: Critical Path */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>3. Critical Path</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeCritical}`}>RESULT NOT YET KNOWN</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Tap Detected</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode} style={{ borderColor: "#f59e0b", color: "#b45309" }}>Connection Drops</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode} style={{ borderColor: "#ef4444" }}>&ldquo;Still checking. Don&apos;t hand over goods yet&rdquo;</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Background Check Resolves</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Received or Failed</span>
+                  </div>
+                </div>
+
+                {/* Merchant Flow 4: Unhappy Path */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>4. Unhappy Path</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeUnhappy}`}>DECLINED / FAILED</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Tap Processed</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode} style={{ borderColor: "#ef4444", color: "#b91c1c" }}>Bank Decline</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Specific Reason Shown</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>&ldquo;Try again&rdquo; or &ldquo;Switch to QR&rdquo;</span>
+                  </div>
+                </div>
+
+                {/* Merchant Flow 5: Lost Phone */}
+                <div className={styles.flowTrack}>
+                  <div className={styles.flowTrackTop}>
+                    <strong style={{ fontSize: "14px", color: "#111827" }}>5. Lost Phone</strong>
+                    <span className={`${styles.flowTrackBadge} ${styles.badgeOnboarding}`}>RECOVERY</span>
+                  </div>
+                  <div className={styles.flowTrackNodes}>
+                    <span className={styles.flowNode}>Sign-in Help</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Confirm It&apos;s You</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Backup Contact Check</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Identity Re-check</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>Lost Phone Turned Off</span>
+                    <span className={styles.flowArrow}>→</span>
+                    <span className={styles.flowNode}>New App PIN</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div style={{ marginTop: "12px", fontSize: "13.5px", color: "#64748b" }}>
-            <strong>Flows:</strong> Four customer paths covering setup, normal use, network disruption, and failure resolution.
+            <strong>Flows:</strong>{" "}
+            {activeFlowTab === "customer"
+              ? "Four customer paths covering setup, normal use, network disruption, and failure resolution."
+              : "Five merchant paths covering onboarding, standard tap, unresolved network drops, declines, and lost-phone recovery."}
           </div>
         </div>
       </div>
