@@ -851,7 +851,224 @@
   text-align: center;
 }
 
-/* ── 06. THE SCREENS GALLERY ─────────────────────── */
+/* ── 06. ITERATIONS ──────────────────────────────── */
+.iterationsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.iterationCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.iterationTitle {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-manrope), sans-serif;
+  color: #111827;
+  margin: 0;
+}
+
+.iterationNoticed {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.55;
+  margin: 0;
+  background: #f8fafc;
+  border-left: 3px solid #059669;
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+}
+
+.iterationNoticedLabel {
+  font-weight: 700;
+  color: #111827;
+}
+
+.iterationCompareRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.iterationCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.iterationStateTag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.iterationTagBefore {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.iterationTagAfter {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.iterationPhoneThumb {
+  width: 100%;
+  max-width: 175px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 12px 24px -6px rgba(0, 0, 0, 0.14);
+  background: #0e1321;
+}
+
+.reconstructedCaption {
+  font-size: 11.5px;
+  color: #64748b;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── 07. THE SCREENS GALLERY (COMPACT SCROLL ROWS) ─ */
+.screensRowSection {
+  margin-top: 32px;
+}
+
+.screensRowHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.screensRowTitle {
+  font-size: 17px;
+  font-weight: 700;
+  font-family: var(--font-manrope), sans-serif;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.screensRowCount {
+  font-size: 12px;
+  font-weight: 700;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.screensScrollTrack {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 4px 2px 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screensScrollTrack::-webkit-scrollbar {
+  height: 6px;
+}
+
+.screensScrollTrack::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 999px;
+}
+
+.screensScrollTrack::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.compactScreenCard {
+  flex: 0 0 185px;
+  width: 185px;
+  scroll-snap-align: start;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.compactScreenCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.compactScreenThumbWrap {
+  background: #f8fafc;
+  padding: 14px 14px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.compactPhoneThumb {
+  width: 136px;
+  height: 296px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 8px 18px -4px rgba(0, 0, 0, 0.14);
+  background: #0e1321;
+  flex-shrink: 0;
+}
+
+.compactPhoneImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.compactScreenFooter {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.compactScreenCaption {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .galleryControlBar {
   display: flex;
   align-items: center;
@@ -1233,6 +1450,10 @@
   }
 
   .screensGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .iterationsGrid {
     grid-template-columns: 1fr;
   }
 }

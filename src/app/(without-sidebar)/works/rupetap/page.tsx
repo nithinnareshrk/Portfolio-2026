@@ -35,9 +35,57 @@ const SECTIONS: SectionItem[] = [
   { id: "constraints", label: "03. Constraints" },
   { id: "product-shape", label: "04. Product Shape" },
   { id: "design-decisions", label: "05. Design Decisions" },
-  { id: "the-screens", label: "06. The Screens" },
-  { id: "validation", label: "07. What I Haven't Validated" },
-  { id: "reflection", label: "08. Reflection" },
+  { id: "iterations", label: "06. Iterations" },
+  { id: "the-screens", label: "07. The Screens" },
+  { id: "validation", label: "08. What I Haven't Validated" },
+  { id: "reflection", label: "09. Reflection" },
+];
+
+const ITERATIONS = [
+  {
+    id: "it-01",
+    title: "Tap states",
+    noticed:
+      "A full-page handshake made the wait feel heavy. I moved it to a floating overlay and kept the full page for the outcome.",
+    beforeImage: "/images/rupetap/iterations/it-01-tap-states.png",
+    beforeAlt: "Before: Full-page handshake screen",
+    afterImage: "/images/rupetap/customer/c-06-tap-ready-overlay.png",
+    afterAlt: "After: Tap ready floating overlay",
+    reconstructed: true,
+  },
+  {
+    id: "it-02",
+    title: "First pass vs final",
+    noticed:
+      "Stitch's first pass buried the result under compliance labels. I cut it to one Verified merchant badge.",
+    beforeImage: "/images/rupetap/iterations/it-02-first-pass-success.png",
+    beforeAlt: "Before: Payment success cluttered with compliance badges",
+    afterImage: "/images/rupetap/customer/c-07-payment-success.png",
+    afterAlt: "After: Clean payment success with single Verified merchant badge",
+    reconstructed: true,
+  },
+  {
+    id: "it-03",
+    title: "NFC-only to full UPI app",
+    noticed:
+      "Stitch added Scan QR on its own. I decided the product should be a full UPI app, with Tap to Pay as the hero.",
+    beforeImage: "/images/rupetap/iterations/it-03-nfc-only-home.png",
+    beforeAlt: "Before: NFC-only home screen",
+    afterImage: "/images/rupetap/customer/c-04-home-card-linked.png",
+    afterAlt: "After: Full UPI home screen with Tap to Pay as hero",
+    reconstructed: true,
+  },
+  {
+    id: "it-04",
+    title: "Lost-phone sign-in",
+    noticed:
+      "OTP-only recovery fails when the SIM leaves with the phone. I added a second device, a backup contact and identity checks.",
+    beforeImage: "/images/rupetap/iterations/it-04-lost-phone-signin.png",
+    beforeAlt: "Before: OTP-only lost phone sign-in",
+    afterImage: "/images/rupetap/merchant/m-09-sign-in-help.png",
+    afterAlt: "After: Multi-factor sign-in help without OTP dependency",
+    reconstructed: true,
+  },
 ];
 
 const CUSTOMER_SCREENS = [
@@ -115,21 +163,21 @@ const CUSTOMER_SCREENS = [
   },
   {
     num: "09",
-    title: "Wasn't charged",
-    caption: "Wasn't charged: Reassuring status confirming customer account was not debited",
-    image: "/images/rupetap/customer/c-09-not-charged.png",
-    width: 804,
-    height: 1764,
-    decision: "Direct reassurance when network disconnects before reaching ledger",
-  },
-  {
-    num: "10",
     title: "Payment declined (Switch card)",
     caption: "Payment declined with switch card: Specific decline reason with inline card switch",
     image: "/images/rupetap/customer/c-08-payment-not-completed.png",
     width: 804,
     height: 1664,
     decision: "Identifies bank limit reached with instant alternative card payment",
+  },
+  {
+    num: "10",
+    title: "Wasn't charged",
+    caption: "Wasn't charged: Reassuring status confirming customer account was not debited",
+    image: "/images/rupetap/customer/c-09-not-charged.png",
+    width: 804,
+    height: 1764,
+    decision: "Direct reassurance when network disconnects before reaching ledger",
   },
 ];
 
@@ -228,7 +276,6 @@ const MERCHANT_SCREENS = [
 
 export default function RupeTapPage() {
   const [activeFlowTab, setActiveFlowTab] = useState<"customer" | "merchant">("customer");
-  const [activeGalleryTab, setActiveGalleryTab] = useState<"customer" | "merchant">("customer");
   const [isAllScreensModalOpen, setIsAllScreensModalOpen] = useState(false);
 
   return (
@@ -364,7 +411,7 @@ export default function RupeTapPage() {
               <div className={styles.constraintNum}>CONSTRAINT 02</div>
               <div className={styles.constraintTitle}>Not every phone has NFC</div>
               <div className={styles.constraintDesc}>
-                A significant portion of affordable smartphones in India lack NFC chips. The product cannot assume contactless tap is universally possible on every shopkeeper&apos;s device.
+                A significant portion of affordable smartphones in India lack NFC chips. The product cannot assume contactless tap is universally possible on every shopkeeper&apos;s device. On phones with no NFC, the app falls back to QR and shows one small dismissible note about an optional reader.
               </div>
             </div>
 
@@ -901,7 +948,7 @@ export default function RupeTapPage() {
                 <div className={`${styles.fourPartCard} ${styles.fourPartCardRejected}`}>
                   <span className={`${styles.fourPartLabel} ${styles.labelRejected}`}>WHAT I REJECTED</span>
                   <p className={styles.fourPartText}>
-                    Generic &ldquo;secured&rdquo; badges and regulatory stamp labels (my first Stitch pass was cluttered with them).
+                    Generic &ldquo;secured&rdquo; badges and regulatory stamp labels.
                   </p>
                 </div>
                 <div className={`${styles.fourPartCard} ${styles.fourPartCardCost}`}>
@@ -1072,128 +1119,6 @@ export default function RupeTapPage() {
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION G</span>
                 <h3 className={styles.decisionTitle}>
-                  Merchant app is a payment rail only.
-                </h3>
-              </div>
-
-              <div className={styles.fourPartGrid}>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardProblem}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelProblem}`}>PROBLEM</span>
-                  <p className={styles.fourPartText}>
-                    Adding catalogs, inventory, and staff rosters clutters the counter screen when a shopkeeper simply needs to take a payment.
-                  </p>
-                </div>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardChose}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelChose}`}>WHAT I CHOSE</span>
-                  <p className={styles.fourPartText}>
-                    Strict payment-rail focus: Enter amount, receive tap or show QR, confirm, check settlements. No inventory or rosters.
-                  </p>
-                </div>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardRejected}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelRejected}`}>WHAT I REJECTED</span>
-                  <p className={styles.fourPartText}>
-                    Inventory management, staff shifts, itemized billing, and business analytics charts.
-                  </p>
-                </div>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardCost}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelCost}`}>WHAT IT COSTS</span>
-                  <p className={styles.fourPartText}>
-                    Fewer auxiliary features to sell, but creates an uncluttered and faster product.
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.decisionVisualWrap}>
-                <div className={styles.imageContainer}>
-                  <div className={styles.imageHeader}>
-                    <span className={styles.imageIdBadge}>DECISION_G_PAYMENT_RAIL_KEYPAD</span>
-                    <span className={styles.imagePurpose}>Zero-bloat merchant collection terminal</span>
-                  </div>
-                  <div className={styles.imageViewport}>
-                    <div className={styles.mockupPhoneSingle}>
-                      <div className={styles.phoneDeviceReal}>
-                        <Image unoptimized src="/images/rupetap/merchant/m-02-home-amount-entered.png"
-                          alt="Zero bloat merchant payment rail keypad"
-                          width={804}
-                          height={1748}
-                          className={styles.phoneScreenImg}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.captionBar}>
-                    <span className={styles.captionLabel}>Decision g:</span> Merchant app is a payment rail only, stripped of inventory, staff, and analytics bloat.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Decision H */}
-            <div className={styles.decisionItem}>
-              <div className={styles.decisionHeader}>
-                <span className={styles.decisionLetter}>DECISION H</span>
-                <h3 className={styles.decisionTitle}>
-                  No-NFC phones get QR plus one small dismissible note.
-                </h3>
-              </div>
-
-              <div className={styles.fourPartGrid}>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardProblem}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelProblem}`}>PROBLEM</span>
-                  <p className={styles.fourPartText}>
-                    Many entry-level phones lack NFC, yet pushing external hardware aggressively damages the promise of a pure phone terminal.
-                  </p>
-                </div>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardChose}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelChose}`}>WHAT I CHOSE</span>
-                  <p className={styles.fourPartText}>
-                    Default to QR payment mode and show a single, small, dismissible card about an external pocket NFC reader.
-                  </p>
-                </div>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardRejected}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelRejected}`}>WHAT I REJECTED</span>
-                  <p className={styles.fourPartText}>
-                    A full promotional splash screen or aggressive hardware upsell flow.
-                  </p>
-                </div>
-                <div className={`${styles.fourPartCard} ${styles.fourPartCardCost}`}>
-                  <span className={`${styles.fourPartLabel} ${styles.labelCost}`}>WHAT IT COSTS</span>
-                  <p className={styles.fourPartText}>
-                    Lower hardware accessory conversion, but preserves trust in the &ldquo;no extra hardware&rdquo; proposition.
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.decisionVisualWrap}>
-                <div className={styles.imageContainer}>
-                  <div className={styles.imageHeader}>
-                    <span className={styles.imageIdBadge}>DECISION_H_NO_NFC_FALLBACK</span>
-                    <span className={styles.imagePurpose}>Graceful degradation to QR with hardware note</span>
-                  </div>
-                  <div className={styles.imageViewport}>
-                    <div className={styles.mockupPhoneSingle}>
-                      <div className={styles.phoneDeviceReal}>
-                        <Image unoptimized src="/images/rupetap/merchant/m-01-no-nfc-phone.png"
-                          alt="No NFC phone defaults to QR with pocket reader card"
-                          width={804}
-                          height={1748}
-                          className={styles.phoneScreenImg}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.captionBar}>
-                    <span className={styles.captionLabel}>Decision h:</span> No-NFC phones get QR plus one small dismissible card about an NFC reader.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Decision I */}
-            <div className={styles.decisionItem}>
-              <div className={styles.decisionHeader}>
-                <span className={styles.decisionLetter}>DECISION I</span>
-                <h3 className={styles.decisionTitle}>
                   Lost-phone recovery that doesn&apos;t depend on OTP.
                 </h3>
               </div>
@@ -1228,7 +1153,7 @@ export default function RupeTapPage() {
               <div className={styles.decisionVisualWrap}>
                 <div className={styles.imageContainer}>
                   <div className={styles.imageHeader}>
-                    <span className={styles.imageIdBadge}>DECISION_I_SIM_INDEPENDENT_RECOVERY</span>
+                    <span className={styles.imageIdBadge}>DECISION_G_SIM_INDEPENDENT_RECOVERY</span>
                     <span className={styles.imagePurpose}>Remote deactivation and identity recovery</span>
                   </div>
                   <div className={styles.imageViewport}>
@@ -1244,7 +1169,7 @@ export default function RupeTapPage() {
                     </div>
                   </div>
                   <div className={styles.captionBar}>
-                    <span className={styles.captionLabel}>Decision i:</span> Lost-phone recovery doesn&apos;t depend on OTP; remote deactivation and multi-factor bank identity secure funds.
+                    <span className={styles.captionLabel}>Decision g:</span> Lost-phone recovery doesn&apos;t depend on OTP; remote deactivation and multi-factor bank identity secure funds.
                   </div>
                 </div>
               </div>
@@ -1253,101 +1178,159 @@ export default function RupeTapPage() {
         </div>
       </div>
 
-      {/* ── 06. THE SCREENS ──────────────────────────────── */}
-      <div className={styles.sectionWarm} id="the-screens">
+      {/* ── 06. ITERATIONS ───────────────────────────────── */}
+      <div className={styles.sectionWarm} id="iterations">
         <div className={styles.inner}>
-          <div className={styles.sectionLabel}>06. THE SCREENS</div>
+          <div className={styles.sectionLabel}>06. ITERATIONS</div>
+          <h2 className={styles.h2}>What changed after I reviewed it.</h2>
+
+          <div className={styles.iterationsGrid}>
+            {ITERATIONS.map((item) => (
+              <div key={item.id} className={styles.iterationCard}>
+                <h3 className={styles.iterationTitle}>{item.title}</h3>
+
+                <div className={styles.iterationCompareRow}>
+                  <div className={styles.iterationCol}>
+                    <span className={`${styles.iterationStateTag} ${styles.iterationTagBefore}`}>
+                      BEFORE
+                    </span>
+                    <div className={styles.iterationPhoneThumb}>
+                      <Image
+                        unoptimized
+                        src={item.beforeImage}
+                        alt={item.beforeAlt}
+                        width={804}
+                        height={1748}
+                        className={styles.phoneScreenImg}
+                      />
+                    </div>
+                    {item.reconstructed && (
+                      <span className={styles.reconstructedCaption}>
+                        Earlier version, reconstructed
+                      </span>
+                    )}
+                  </div>
+
+                  <div className={styles.iterationCol}>
+                    <span className={`${styles.iterationStateTag} ${styles.iterationTagAfter}`}>
+                      AFTER
+                    </span>
+                    <div className={styles.iterationPhoneThumb}>
+                      <Image
+                        unoptimized
+                        src={item.afterImage}
+                        alt={item.afterAlt}
+                        width={804}
+                        height={1748}
+                        className={styles.phoneScreenImg}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <p className={styles.iterationNoticed}>
+                  <span className={styles.iterationNoticedLabel}>What I noticed:</span>{" "}
+                  {item.noticed}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── 07. THE SCREENS ──────────────────────────────── */}
+      <div className={styles.sectionWhite} id="the-screens">
+        <div className={styles.inner}>
+          <div className={styles.sectionLabel}>07. THE SCREENS</div>
           <h2 className={styles.h2}>The twenty hero screens across both apps.</h2>
           <p className={styles.lead}>
             Ten customer screens and ten merchant screens. Each screen reflects a specific product decision made to establish clarity at the checkout counter.
           </p>
 
-          <div className={styles.galleryControlBar}>
-            <div className={styles.galleryTabs}>
+          {/* Customer Screens Compact Scroll Row */}
+          <div className={styles.screensRowSection}>
+            <div className={styles.screensRowHeader}>
+              <div className={styles.screensRowTitle}>
+                Customer App
+                <span className={styles.screensRowCount}>10 Screens</span>
+              </div>
               <button
                 type="button"
-                className={`${styles.galleryTabBtn} ${activeGalleryTab === "customer" ? styles.galleryTabBtnActive : ""}`}
-                onClick={() => setActiveGalleryTab("customer")}
+                className={styles.galleryActionLink}
+                onClick={() => setIsAllScreensModalOpen(true)}
+                style={{ background: "none", border: "none" }}
               >
-                Customer App (10 Screens)
-              </button>
-              <button
-                type="button"
-                className={`${styles.galleryTabBtn} ${activeGalleryTab === "merchant" ? styles.galleryTabBtnActive : ""}`}
-                onClick={() => setActiveGalleryTab("merchant")}
-              >
-                Merchant App (10 Screens)
+                <Layers size={15} /> View all screens in full gallery
               </button>
             </div>
 
-            <button
-              type="button"
-              className={styles.galleryActionLink}
-              onClick={() => setIsAllScreensModalOpen(true)}
-              style={{ background: "none", border: "none" }}
-            >
-              <Layers size={15} /> View all screens in full gallery
-            </button>
+            <div className={styles.screensScrollTrack}>
+              {CUSTOMER_SCREENS.map((screen) => (
+                <div key={screen.num} className={styles.compactScreenCard}>
+                  <div className={styles.compactScreenThumbWrap}>
+                    <div className={styles.compactPhoneThumb}>
+                      <Image
+                        unoptimized
+                        src={screen.image}
+                        alt={screen.title}
+                        width={screen.width}
+                        height={screen.height}
+                        className={styles.compactPhoneImg}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.compactScreenFooter}>
+                    <span className={styles.screenOrderBadge}>SCREEN {screen.num}</span>
+                    <span className={styles.compactScreenCaption} title={screen.caption}>
+                      {screen.title}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Customer Screens Grid (10 Screens) */}
-          {activeGalleryTab === "customer" && (
-            <div className={styles.screensGrid}>
-              {CUSTOMER_SCREENS.map((screen) => (
-                <div key={screen.num} className={styles.screenCard}>
-                  <div className={styles.screenPreviewWrap}>
-                    <div className={styles.phoneDeviceRealCompact}>
-                      <Image unoptimized src={screen.image}
-                        alt={screen.title}
-                        width={screen.width}
-                        height={screen.height}
-                        className={styles.phoneScreenImg}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.screenCardFooter}>
-                    <span className={styles.screenOrderBadge}>SCREEN {screen.num}</span>
-                    <span className={styles.screenCaptionText}>
-                      <strong>{screen.caption.split(":")[0]}:</strong>{screen.caption.split(":")[1]}
-                    </span>
-                  </div>
-                </div>
-              ))}
+          {/* Merchant Screens Compact Scroll Row */}
+          <div className={styles.screensRowSection}>
+            <div className={styles.screensRowHeader}>
+              <div className={styles.screensRowTitle}>
+                Merchant App
+                <span className={styles.screensRowCount}>10 Screens</span>
+              </div>
             </div>
-          )}
 
-          {/* Merchant Screens Grid (10 Screens) */}
-          {activeGalleryTab === "merchant" && (
-            <div className={styles.screensGrid}>
+            <div className={styles.screensScrollTrack}>
               {MERCHANT_SCREENS.map((screen) => (
-                <div key={screen.num} className={styles.screenCard}>
-                  <div className={styles.screenPreviewWrap}>
-                    <div className={styles.phoneDeviceRealCompact}>
-                      <Image unoptimized src={screen.image}
+                <div key={screen.num} className={styles.compactScreenCard}>
+                  <div className={styles.compactScreenThumbWrap}>
+                    <div className={styles.compactPhoneThumb}>
+                      <Image
+                        unoptimized
+                        src={screen.image}
                         alt={screen.title}
                         width={screen.width}
                         height={screen.height}
-                        className={styles.phoneScreenImg}
+                        className={styles.compactPhoneImg}
                       />
                     </div>
                   </div>
-                  <div className={styles.screenCardFooter}>
+                  <div className={styles.compactScreenFooter}>
                     <span className={styles.screenOrderBadge}>SCREEN {screen.num}</span>
-                    <span className={styles.screenCaptionText}>
-                      <strong>{screen.caption.split(":")[0]}:</strong>{screen.caption.split(":")[1]}
+                    <span className={styles.compactScreenCaption} title={screen.caption}>
+                      {screen.title}
                     </span>
                   </div>
                 </div>
               ))}
             </div>
-          )}
+          </div>
         </div>
       </div>
 
-      {/* ── 07. WHAT I HAVEN'T VALIDATED ─────────────────── */}
-      <div className={styles.sectionWhite} id="validation">
+      {/* ── 08. WHAT I HAVEN'T VALIDATED ─────────────────── */}
+      <div className={styles.sectionWarm} id="validation">
         <div className={styles.inner}>
-          <div className={styles.sectionLabel}>07. WHAT I HAVEN&apos;T VALIDATED</div>
+          <div className={styles.sectionLabel}>08. WHAT I HAVEN&apos;T VALIDATED</div>
           <h2 className={styles.h2}>Honest boundaries and untested assumptions.</h2>
 
           <div className={styles.body}>
@@ -1411,10 +1394,10 @@ export default function RupeTapPage() {
         </div>
       </div>
 
-      {/* ── 08. WHAT I'D DO DIFFERENTLY / REFLECTION ──────── */}
-      <div className={styles.sectionWarm} id="reflection">
+      {/* ── 09. WHAT I'D DO DIFFERENTLY / REFLECTION ──────── */}
+      <div className={styles.sectionWhite} id="reflection">
         <div className={styles.inner}>
-          <div className={styles.sectionLabel}>08. REFLECTION</div>
+          <div className={styles.sectionLabel}>09. REFLECTION</div>
           <h2 className={styles.h2}>What I&apos;d do differently.</h2>
 
           <p className={styles.lead}>
