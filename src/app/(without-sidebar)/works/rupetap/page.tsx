@@ -44,47 +44,97 @@ const SECTIONS: SectionItem[] = [
 const ITERATIONS = [
   {
     id: "it-01",
-    title: "Tap states",
+    title: "1. Tap flow (Customer)",
+    beforeStrip: [
+      {
+        src: "/images/rupetap/iterations/it-01-before-1.png",
+        alt: "Earlier version of Tap flow: Handshake step 1 Detecting terminal",
+        width: 812,
+        height: 2024,
+      },
+      {
+        src: "/images/rupetap/iterations/it-01-before-2.png",
+        alt: "Earlier version of Tap flow: Handshake step 2 Reading card",
+        width: 812,
+        height: 2024,
+      },
+      {
+        src: "/images/rupetap/iterations/it-01-before-3.png",
+        alt: "Earlier version of Tap flow: Handshake step 3 Authorizing",
+        width: 812,
+        height: 2122,
+      },
+    ],
+    afterImage: {
+      src: "/images/rupetap/iterations/it-01-after.png",
+      alt: "Updated Tap flow: Floating overlay on the shop screen",
+      width: 804,
+      height: 1748,
+    },
     noticed:
-      "A full-page handshake made the wait feel heavy. I moved it to a floating overlay and kept the full page for the outcome.",
-    beforeImage: "/images/rupetap/iterations/it-01-tap-states.png",
-    beforeAlt: "Before: Full-page handshake screen",
-    afterImage: "/images/rupetap/customer/c-06-tap-ready-overlay.png",
-    afterAlt: "After: Tap ready floating overlay",
-    reconstructed: true,
+      "I had designed what the system was doing, not what the customer needs to know. RF field, APDU trace, cryptogram steps. Their only questions are: is it ready, did it take, and am I charged?",
+    changed:
+      "A floating overlay on the shop screen. Ready, Tapped, Verifying in plain words, with the card and a clear Cancel.",
   },
   {
     id: "it-02",
-    title: "First pass vs final",
+    title: "2. Home (Customer)",
+    beforeImage: {
+      src: "/images/rupetap/iterations/it-02-before.png",
+      alt: "Earlier version of Customer Home: Tap-only home screen",
+      width: 828,
+      height: 1998,
+    },
+    afterImage: {
+      src: "/images/rupetap/iterations/it-02-after.png",
+      alt: "Updated Customer Home: UPI-style home with QR baseline",
+      width: 804,
+      height: 2704,
+    },
     noticed:
-      "Stitch's first pass buried the result under compliance labels. I cut it to one Verified merchant badge.",
-    beforeImage: "/images/rupetap/iterations/it-02-first-pass-success.png",
-    beforeAlt: "Before: Payment success cluttered with compliance badges",
-    afterImage: "/images/rupetap/customer/c-07-payment-success.png",
-    afterAlt: "After: Clean payment success with single Verified merchant badge",
-    reconstructed: true,
+      "People in India open a UPI app and scan. A tap-only home assumes a linked card and a shop that accepts tap.",
+    changed:
+      "A UPI-style home where QR is the baseline and tap is added when it's useful (Decision E).",
   },
   {
     id: "it-03",
-    title: "NFC-only to full UPI app",
+    title: "3. Success screen (Customer)",
+    beforeImage: {
+      src: "/images/rupetap/iterations/it-03-before.png",
+      alt: "Earlier version of Customer Success screen: Cluttered with eleven proof badges",
+      width: 842,
+      height: 1782,
+    },
+    afterImage: {
+      src: "/images/rupetap/iterations/it-03-after.png",
+      alt: "Updated Customer Success screen: One amount, one Verified merchant badge, one reference",
+      width: 804,
+      height: 1776,
+    },
     noticed:
-      "Stitch added Scan QR on its own. I decided the product should be a full UPI app, with Tap to Pay as the hero.",
-    beforeImage: "/images/rupetap/iterations/it-03-nfc-only-home.png",
-    beforeAlt: "Before: NFC-only home screen",
-    afterImage: "/images/rupetap/customer/c-04-home-card-linked.png",
-    afterAlt: "After: Full UPI home screen with Tap to Pay as hero",
-    reconstructed: true,
+      "Eleven proof badges. The screen was proving the system's credentials, not answering the customer's question, and I couldn't back up several of those claims.",
+    changed:
+      "One amount, one Verified merchant, one reference (Decision D).",
   },
   {
     id: "it-04",
-    title: "Lost-phone sign-in",
+    title: "4. Lost phone (Merchant)",
+    beforeImage: {
+      src: "/images/rupetap/iterations/it-04-before.png",
+      alt: "Earlier version of Merchant Lost phone recovery: OTP-only recovery screen",
+      width: 812,
+      height: 1782,
+    },
+    afterImage: {
+      src: "/images/rupetap/iterations/it-04-after.png",
+      alt: "Updated Merchant Lost phone recovery: Turn off my lost phone first",
+      width: 804,
+      height: 1748,
+    },
     noticed:
-      "OTP-only recovery fails when the SIM leaves with the phone. I added a second device, a backup contact and identity checks.",
-    beforeImage: "/images/rupetap/iterations/it-04-lost-phone-signin.png",
-    beforeAlt: "Before: OTP-only lost phone sign-in",
-    afterImage: "/images/rupetap/merchant/m-09-sign-in-help.png",
-    afterAlt: "After: Multi-factor sign-in help without OTP dependency",
-    reconstructed: true,
+      "Recovery depended on an OTP sent to the SIM in the lost phone, and the first thing a shopkeeper needs is to stop that phone taking payments.",
+    changed:
+      "'Turn off my lost phone' comes first, with sign-in on a new phone as a separate path (Decision G).",
   },
 ];
 
@@ -1185,56 +1235,82 @@ export default function RupeTapPage() {
       <div className={styles.sectionWarm} id="iterations">
         <div className={styles.inner}>
           <div className={styles.sectionLabel}>06. ITERATIONS</div>
-          <h2 className={styles.h2}>What changed after I reviewed it.</h2>
+          <h2 className={styles.h2}>Four things I changed after looking at my own screens.</h2>
+          <p className={styles.lead}>
+            Each pair shows an earlier version, what I noticed, and what I changed.
+          </p>
 
-          <div className={styles.iterationsGrid}>
+          <div className={styles.iterationsList}>
             {ITERATIONS.map((item) => (
-              <div key={item.id} className={styles.iterationCard}>
+              <div key={item.id} className={styles.iterationRow}>
                 <h3 className={styles.iterationTitle}>{item.title}</h3>
 
                 <div className={styles.iterationCompareRow}>
                   <div className={styles.iterationCol}>
-                    <span className={`${styles.iterationStateTag} ${styles.iterationTagBefore}`}>
-                      BEFORE
-                    </span>
-                    <div className={styles.iterationPhoneThumb}>
-                      <Image
-                        unoptimized
-                        src={item.beforeImage}
-                        alt={item.beforeAlt}
-                        width={804}
-                        height={1748}
-                        className={styles.phoneScreenImg}
-                      />
+                    <div className={styles.iterationColHeader}>
+                      <span className={styles.iterationChip}>Before</span>
+                      <span className={styles.iterationEarlierLabel}>Earlier version</span>
                     </div>
-                    {item.reconstructed && (
-                      <span className={styles.reconstructedCaption}>
-                        Earlier version, reconstructed
-                      </span>
+
+                    {item.beforeStrip ? (
+                      <div className={styles.iterationBeforeStrip}>
+                        {item.beforeStrip.map((frame) => (
+                          <div key={frame.src} className={styles.iterationPhoneStripItem}>
+                            <Image
+                              unoptimized
+                              src={frame.src}
+                              alt={frame.alt}
+                              width={frame.width}
+                              height={frame.height}
+                              className={styles.phoneScreenImg}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      item.beforeImage && (
+                        <div className={styles.iterationPhoneMuted}>
+                          <Image
+                            unoptimized
+                            src={item.beforeImage.src}
+                            alt={item.beforeImage.alt}
+                            width={item.beforeImage.width}
+                            height={item.beforeImage.height}
+                            className={styles.phoneScreenImg}
+                          />
+                        </div>
+                      )
                     )}
                   </div>
 
                   <div className={styles.iterationCol}>
-                    <span className={`${styles.iterationStateTag} ${styles.iterationTagAfter}`}>
-                      AFTER
-                    </span>
-                    <div className={styles.iterationPhoneThumb}>
+                    <div className={styles.iterationColHeader}>
+                      <span className={`${styles.iterationChip} ${styles.iterationChipAfter}`}>
+                        After
+                      </span>
+                    </div>
+
+                    <div className={styles.iterationPhoneAfter}>
                       <Image
                         unoptimized
-                        src={item.afterImage}
-                        alt={item.afterAlt}
-                        width={804}
-                        height={1748}
+                        src={item.afterImage.src}
+                        alt={item.afterImage.alt}
+                        width={item.afterImage.width}
+                        height={item.afterImage.height}
                         className={styles.phoneScreenImg}
                       />
                     </div>
                   </div>
                 </div>
 
-                <p className={styles.iterationNoticed}>
-                  <span className={styles.iterationNoticedLabel}>What I noticed:</span>{" "}
-                  {item.noticed}
-                </p>
+                <div className={styles.iterationNotes}>
+                  <p className={styles.iterationNoteLine}>
+                    <span className={styles.iterationNoteLabel}>Noticed:</span> {item.noticed}
+                  </p>
+                  <p className={styles.iterationNoteLine}>
+                    <span className={styles.iterationNoteLabel}>Changed:</span> {item.changed}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
