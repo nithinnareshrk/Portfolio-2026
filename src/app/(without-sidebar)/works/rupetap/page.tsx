@@ -365,10 +365,10 @@ export default function RupeTapPage() {
       <div className={styles.sectionWarm} id="the-problem">
         <div className={styles.inner}>
           <div className={styles.sectionLabel}>02. THE PROBLEM</div>
-          <h2 className={styles.h2}>Merchant confidence, not speed.</h2>
+          <h2 className={styles.h2}>Confidence, not speed.</h2>
 
           <p className={styles.lead}>
-            QR payments in India are already fast. For low-footfall neighborhood shops, there are rarely long queues. Speed was never the real problem. Confidence was.
+            QR payments in India are already fast. For low-footfall neighborhood shops, there are rarely long queues. Speed was never the real problem. Confidence was, for the shopkeeper and the customer.
           </p>
 
           <div className={styles.body}>
@@ -380,6 +380,9 @@ export default function RupeTapPage() {
             </p>
             <p>
               There is also a second friction. Some customers cannot pay by QR at that exact moment. Their banking app might be down, mobile signal might drop inside the shop, or they simply prefer tapping a physical debit or credit card.
+            </p>
+            <p>
+              RupeTap is designed for the small shops where the phone they already own can become the terminal.
             </p>
           </div>
 
@@ -1401,7 +1404,7 @@ export default function RupeTapPage() {
           <h2 className={styles.h2}>What I&apos;d do differently.</h2>
 
           <p className={styles.lead}>
-            I started with speed as the pitch. Then I saw that QR is already fast, and the real problem is the shopkeeper&apos;s confidence that a payment landed. Looking back, here is what I&apos;d change in how I worked:
+            I started with speed as the pitch. Then I saw that QR is already fast, and the real problem is confidence at the counter. Looking back, here is what I&apos;d change in how I worked:
           </p>
 
           <div className={styles.body}>
