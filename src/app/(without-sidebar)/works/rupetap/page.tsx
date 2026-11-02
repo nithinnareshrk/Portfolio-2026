@@ -243,15 +243,11 @@ export default function RupeTapPage() {
           </div>
 
           <h1 className={styles.heroTitle}>
-            RupeTap — Tap-to-Pay on a Shopkeeper&apos;s Own Phone
+            The payment terminal is already in the shopkeeper&apos;s pocket.
           </h1>
 
           <p className={styles.heroSub}>
-            A shopkeeper&apos;s phone becomes the payment terminal. The customer taps a phone or card, or scans a QR, and the shopkeeper gets one clear, confirmed result.
-          </p>
-
-          <p className={styles.heroAccent}>
-            No card machine, no extra hardware, and no waiting for soundbox announcements.
+            Tap payments are arriving in India, but they depend on an NFC terminal at the counter. RupeTap is a concept for using the phone the shopkeeper already owns, designed around one thing: knowing the money landed.
           </p>
         </div>
 
@@ -280,18 +276,18 @@ export default function RupeTapPage() {
           </div>
         </div>
 
-        {/* Hero image container: Merchant Tap Receiving & Confirming */}
+        {/* Hero image container: Both sides of the same tap */}
         <div className={styles.imageContainer} style={{ marginTop: "48px" }}>
           <div className={styles.imageHeader}>
-            <span className={styles.imageIdBadge}>HERO_MERCHANT_TAP_RECEIVING_CONFIRMING</span>
-            <span className={styles.imagePurpose}>Merchant terminal • Receiving and confirming states</span>
+            <span className={styles.imageIdBadge}>HERO_BOTH_SIDES_OF_TAP</span>
+            <span className={styles.imagePurpose}>Customer overlay and merchant confirmation</span>
           </div>
 
           <div className={styles.imageViewport}>
             <div className={styles.mockupPhonePair}>
               <div className={styles.phoneDeviceReal} style={{ maxWidth: "270px" }}>
-                <Image unoptimized src="/images/rupetap/merchant/m-03-tap-ready.png"
-                  alt="Merchant Tap Receiving State"
+                <Image unoptimized src="/images/rupetap/customer/c-06-tap-ready-overlay.png"
+                  alt="Customer Tap Ready Overlay"
                   width={804}
                   height={1748}
                   priority
@@ -312,7 +308,7 @@ export default function RupeTapPage() {
           </div>
 
           <div className={styles.captionBar}>
-            <span className={styles.captionLabel}>Hero:</span> Merchant Tap Receiving, Confirming
+            <span className={styles.captionLabel}>Hero:</span> Both sides of the same tap.
           </div>
         </div>
       </div>
