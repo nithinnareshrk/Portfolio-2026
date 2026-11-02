@@ -1480,21 +1480,21 @@ export default function RupeTapPage() {
           <h2 className={styles.h2}>What I&apos;d do differently.</h2>
 
           <p className={styles.lead}>
-            I started with speed as the pitch. Then I saw that QR is already fast, and the real problem is confidence at the counter. Looking back, here is what I&apos;d change in how I worked:
+            Looking back, what I&apos;d change is less about the screens and more about how I worked.
           </p>
 
           <div className={styles.body}>
             <p>
-              <strong>Design the unclear moment first.</strong> I built the happy path first and added the &ldquo;checking your transaction&rdquo; state after the flow showed a gap. That state is the whole point of the product, so I&apos;d design it first and build the rest around it.
+              <strong>Design the unclear moment first.</strong>{" "}
+              I built the happy path first and added the &lsquo;checking your transaction&rsquo; state only after the flow showed a gap. That state is the whole point of the product, so next time I&apos;d design it first and build the rest around it.
             </p>
             <p>
-              <strong>Design the two apps as one timeline.</strong> I designed the customer app first and the merchant app second, but a payment is one event seen from both sides. The customer&apos;s &ldquo;checking&rdquo; and the merchant&apos;s &ldquo;confirming&rdquo; are the same moment, and I&apos;d lay them side by side from the start so the wording and timing match.
+              <strong>Fix the scope before designing screens.</strong>{" "}
+              The merchant app grew from about 24 screens to 41 as I added device management and lost-phone recovery. Recovery was worth designing, but I&apos;d decide earlier what belongs in a first version and what waits for a second.
             </p>
             <p>
-              <strong>Fix the scope before Designing screens.</strong> The merchant app grew from about 24 screens to 41 as I added device management and lost-phone recovery. Recovery was worth designing, but I&apos;d decide earlier what belongs in a first version and what belongs in a second.
-            </p>
-            <p>
-              <strong>Write the content rules before the first Screen.</strong> My first generated screens were crowded with security and compliance badges, and I had to strip them back to one quiet trust signal per screen. A short rulebook (plain words, no compliance labels, one trust signal) written up front would have saved a full round of cleanup.
+              <strong>Write the content rules before the first screen.</strong>{" "}
+              My first generated screens were crowded with security and compliance badges, and I had to strip them back to one quiet trust signal per screen (see Iterations). A short rulebook written up front, covering plain words, no compliance labels and one trust signal, would have saved a full round of cleanup.
             </p>
           </div>
         </div>
