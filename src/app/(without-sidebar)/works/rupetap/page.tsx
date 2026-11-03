@@ -330,7 +330,7 @@ export default function RupeTapPage() {
 
   return (
     <div className={styles.page}>
-      <ProjectSectionRail sections={SECTIONS} />
+      <ProjectSectionRail sections={SECTIONS} subNavSectionId="design-decisions" />
 
       {/* ── 01. OVERVIEW / HERO ───────────────────────────── */}
       <div className={styles.inner} id="overview">
@@ -864,7 +864,7 @@ export default function RupeTapPage() {
 
           <div className={styles.decisionsContainer}>
             {/* Decision A */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-a">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION A</span>
                 <h3 className={styles.decisionTitle}>
@@ -933,7 +933,7 @@ export default function RupeTapPage() {
             </div>
 
             {/* Decision B */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-b">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION B</span>
                 <h3 className={styles.decisionTitle}>
@@ -994,7 +994,7 @@ export default function RupeTapPage() {
             </div>
 
             {/* Decision C */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-c">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION C</span>
                 <h3 className={styles.decisionTitle}>
@@ -1055,7 +1055,7 @@ export default function RupeTapPage() {
             </div>
 
             {/* Decision D */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-d">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION D</span>
                 <h3 className={styles.decisionTitle}>
@@ -1116,7 +1116,7 @@ export default function RupeTapPage() {
             </div>
 
             {/* Decision E */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-e">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION E</span>
                 <h3 className={styles.decisionTitle}>
@@ -1185,7 +1185,7 @@ export default function RupeTapPage() {
             </div>
 
             {/* Decision F */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-f">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION F</span>
                 <h3 className={styles.decisionTitle}>
@@ -1246,7 +1246,7 @@ export default function RupeTapPage() {
             </div>
 
             {/* Decision G */}
-            <div className={styles.decisionItem}>
+            <div className={styles.decisionItem} id="decision-g">
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION G</span>
                 <h3 className={styles.decisionTitle}>

@@ -578,6 +578,7 @@
   gap: 28px;
   border-bottom: 1px solid #e5e7eb;
   padding-bottom: 64px;
+  scroll-margin-top: 96px;
 }
 
 .decisionItem:last-child {

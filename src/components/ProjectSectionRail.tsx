@@ -8,13 +8,26 @@ export interface SectionItem {
   label: string;
 }
 
-interface ProjectSectionRailProps {
-  sections?: SectionItem[];
+interface SubSectionItem {
+  id: string;
+  letter: string;
+  title: string;
 }
 
-export default function ProjectSectionRail({ sections: propSections }: ProjectSectionRailProps) {
+interface ProjectSectionRailProps {
+  sections?: SectionItem[];
+  subNavSectionId?: string;
+}
+
+export default function ProjectSectionRail({
+  sections: propSections,
+  subNavSectionId,
+}: ProjectSectionRailProps) {
   const [sections, setSections] = useState<SectionItem[]>(propSections || []);
   const [activeSectionId, setActiveSectionId] = useState<string>("");
+  const [subItems, setSubItems] = useState<SubSectionItem[]>([]);
+  const [activeSubId, setActiveSubId] = useState<string>("");
+  const [isSubSectionInView, setIsSubSectionInView] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const railRef = useRef<HTMLDivElement>(null);
@@ -85,6 +98,85 @@ export default function ProjectSectionRail({ sections: propSections }: ProjectSe
     };
   }, [updateActiveSection]);
 
+  // Discover decision headings dynamically and observe them via IntersectionObserver
+  useEffect(() => {
+    if (!subNavSectionId) return;
+    const parentEl = document.getElementById(subNavSectionId);
+    if (!parentEl) return;
+
+    const decisionNodes = Array.from(
+      parentEl.querySelectorAll<HTMLElement>('[class*="decisionItem"]')
+    );
+
+    const parsed: SubSectionItem[] = [];
+    decisionNodes.forEach((node, idx) => {
+      const letterNode = node.querySelector<HTMLElement>('[class*="decisionLetter"]');
+      const titleNode = node.querySelector<HTMLElement>('h3, [class*="decisionTitle"]');
+      const rawLetter = letterNode?.textContent?.trim() || "";
+      const letter =
+        rawLetter.replace(/^DECISION\s+/i, "").trim() ||
+        String.fromCharCode(65 + idx);
+      const title =
+        titleNode?.textContent?.replace(/\s+/g, " ").trim() ||
+        `Decision ${letter}`;
+
+      if (!node.id) {
+        node.id = `decision-${letter.toLowerCase()}`;
+      }
+
+      parsed.push({
+        id: node.id,
+        letter,
+        title,
+      });
+    });
+
+    setSubItems(parsed);
+    if (parsed.length === 0) return;
+
+    const visibleMap = new Map<string, IntersectionObserverEntry>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const targetId = (entry.target as HTMLElement).id;
+          if (entry.isIntersecting) {
+            visibleMap.set(targetId, entry);
+          } else {
+            visibleMap.delete(targetId);
+          }
+        });
+
+        if (isScrollingRef.current) return;
+
+        if (visibleMap.size > 0) {
+          setIsSubSectionInView(true);
+          // Pick the topmost visible decision in document order
+          for (const item of parsed) {
+            if (visibleMap.has(item.id)) {
+              setActiveSubId(item.id);
+              break;
+            }
+          }
+        } else {
+          setIsSubSectionInView(false);
+          setActiveSubId("");
+        }
+      },
+      {
+        // Account for sticky header (~72px) at top and trigger in upper/middle viewport
+        rootMargin: "-84px 0px -45% 0px",
+        threshold: [0, 0.15, 0.4],
+      }
+    );
+
+    decisionNodes.forEach((node) => observer.observe(node));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [subNavSectionId]);
+
   // Click outside to collapse if manually expanded
   useEffect(() => {
     if (!isExpanded) return;
@@ -114,13 +206,17 @@ export default function ProjectSectionRail({ sections: propSections }: ProjectSe
     isScrollingRef.current = true;
     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
 
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const navbarOffset = 80;
     const elementPosition = targetElement.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
 
     window.scrollTo({
       top: Math.max(0, offsetPosition),
-      behavior: "smooth",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
 
     scrollTimeoutRef.current = setTimeout(() => {
@@ -133,13 +229,38 @@ export default function ProjectSectionRail({ sections: propSections }: ProjectSe
     setIsHovered(false);
   };
 
+  const handleSubItemClick = (parentId: string, subId: string) => {
+    const targetElement = document.getElementById(subId);
+    if (!targetElement) return;
+
+    setActiveSectionId(parentId);
+    setActiveSubId(subId);
+    setIsSubSectionInView(true);
+    isScrollingRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    targetElement.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      isScrollingRef.current = false;
+      updateActiveSection();
+    }, 800);
+  };
+
   if (sections.length === 0) return null;
 
     const activeIndex = sections.findIndex(
       (s, idx) => s.id === activeSectionId || (!activeSectionId && idx === 0)
     );
     const activeSection = sections[activeIndex >= 0 ? activeIndex : 0];
-    const isOpen = isExpanded || isHovered;
+    const isOpen = !subNavSectionId && (isExpanded || isHovered);
 
     return (
       <>
@@ -147,65 +268,149 @@ export default function ProjectSectionRail({ sections: propSections }: ProjectSe
         <aside
           ref={railRef}
           className={`${styles.railContainer} ${isOpen ? styles.railExpanded : ""}`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={() => {
+            if (!subNavSectionId) setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            if (!subNavSectionId) setIsHovered(false);
+          }}
           aria-label="Section navigation rail"
         >
-          {/* ── Collapsed Dash Rail ───────────────────────────── */}
-          <div 
-            className={styles.dashTrack}
-            onClick={() => setIsExpanded((prev) => !prev)}
-            role="button"
-            tabIndex={0}
-            aria-label="Toggle section menu"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                setIsExpanded((prev) => !prev);
-              }
-            }}
-          >
-            {sections.map((section, idx) => {
-              const isActive = section.id === activeSectionId || (!activeSectionId && idx === 0);
-              return (
-                <div
-                  key={section.id}
-                  className={`${styles.dashItem} ${isActive ? styles.dashActive : ""}`}
-                  title={section.label}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleSectionClick(section.id);
-                  }}
-                >
-                  <div className={styles.dashBar} />
-                </div>
-              );
-            })}
-          </div>
+          {subNavSectionId ? (
+            /* ── Dash Rail with Nested Sub-Section Navigation ── */
+            <nav aria-label="Chapter progress">
+              <ul className={styles.dashTrackList}>
+                {sections.map((section, idx) => {
+                  const isActive =
+                    section.id === activeSectionId ||
+                    (!activeSectionId && idx === 0);
+                  const hasSubNav =
+                    section.id === subNavSectionId && subItems.length > 0;
+                  const isSubNavExpanded =
+                    hasSubNav && (isActive || isSubSectionInView);
 
-          {/* ── Expanded Readable Section Card ──────────────── */}
-          <div className={styles.expandedPanel} aria-hidden={!isOpen}>
-            <div className={styles.panelHeader}>
-              <span className={styles.panelTitle}>Sections</span>
-              <span className={styles.panelCount}>{sections.length}</span>
-            </div>
+                  return (
+                    <li key={section.id} className={styles.dashListItem}>
+                      <button
+                        type="button"
+                        className={`${styles.dashItemBtn} ${
+                          isActive ? styles.dashItemBtnActive : ""
+                        }`}
+                        aria-current={isActive ? "true" : undefined}
+                        aria-expanded={hasSubNav ? isSubNavExpanded : undefined}
+                        aria-label={section.label}
+                        onClick={() => handleSectionClick(section.id)}
+                      >
+                        <span className={styles.dashBar} />
+                        <span className={styles.subDashTooltip} role="tooltip">
+                          {section.label}
+                        </span>
+                      </button>
 
-            <nav className={styles.sectionNav}>
-              {sections.map((section, index) => {
-                const isActive = section.id === activeSectionId || (!activeSectionId && index === 0);
-                return (
-                  <button
-                    key={section.id}
-                    type="button"
-                    className={`${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
-                    onClick={() => handleSectionClick(section.id)}
-                  >
-                    <span className={styles.itemDash} />
-                    <span className={styles.itemLabel}>{section.label}</span>
-                  </button>
-                );
-              })}
+                      {hasSubNav && (
+                        <ul
+                          className={`${styles.subDashList} ${
+                            isSubNavExpanded ? styles.subDashListExpanded : ""
+                          }`}
+                          aria-label={`${section.label} sub-sections`}
+                          aria-hidden={!isSubNavExpanded}
+                        >
+                          {subItems.map((sub) => {
+                            const isSubActive = activeSubId === sub.id;
+                            return (
+                              <li key={sub.id} className={styles.subDashListItem}>
+                                <button
+                                  type="button"
+                                  tabIndex={isSubNavExpanded ? 0 : -1}
+                                  className={`${styles.subDashBtn} ${
+                                    isSubActive ? styles.subDashBtnActive : ""
+                                  }`}
+                                  aria-current={isSubActive ? "true" : undefined}
+                                  aria-label={`Decision ${sub.letter}: ${sub.title}`}
+                                  onClick={() =>
+                                    handleSubItemClick(section.id, sub.id)
+                                  }
+                                >
+                                  <span className={styles.subDashLetter}>
+                                    {sub.letter}
+                                  </span>
+                                  <span className={styles.subDashBar} />
+                                  <span
+                                    className={styles.subDashTooltip}
+                                    role="tooltip"
+                                  >
+                                    {sub.title}
+                                  </span>
+                                </button>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </nav>
-          </div>
+          ) : (
+            <>
+              {/* ── Collapsed Dash Rail ───────────────────────────── */}
+              <div 
+                className={styles.dashTrack}
+                onClick={() => setIsExpanded((prev) => !prev)}
+                role="button"
+                tabIndex={0}
+                aria-label="Toggle section menu"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    setIsExpanded((prev) => !prev);
+                  }
+                }}
+              >
+                {sections.map((section, idx) => {
+                  const isActive = section.id === activeSectionId || (!activeSectionId && idx === 0);
+                  return (
+                    <div
+                      key={section.id}
+                      className={`${styles.dashItem} ${isActive ? styles.dashActive : ""}`}
+                      title={section.label}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleSectionClick(section.id);
+                      }}
+                    >
+                      <div className={styles.dashBar} />
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* ── Expanded Readable Section Card ──────────────── */}
+              <div className={styles.expandedPanel} aria-hidden={!isOpen}>
+                <div className={styles.panelHeader}>
+                  <span className={styles.panelTitle}>Sections</span>
+                  <span className={styles.panelCount}>{sections.length}</span>
+                </div>
+
+                <nav className={styles.sectionNav}>
+                  {sections.map((section, index) => {
+                    const isActive = section.id === activeSectionId || (!activeSectionId && index === 0);
+                    return (
+                      <button
+                        key={section.id}
+                        type="button"
+                        className={`${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
+                        onClick={() => handleSectionClick(section.id)}
+                      >
+                        <span className={styles.itemDash} />
+                        <span className={styles.itemLabel}>{section.label}</span>
+                      </button>
+                    );
+                  })}
+                </nav>
+              </div>
+            </>
+          )}
         </aside>
 
         {/* Mobile Floating Quick-Jump Pill */}
