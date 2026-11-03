@@ -1488,11 +1488,11 @@ export default function RupeTapPage() {
       <div className={styles.sectionWarm} id="validation">
         <div className={styles.inner}>
           <div className={styles.sectionLabel}>08. WHAT I HAVEN&apos;T VALIDATED</div>
-          <h2 className={styles.h2}>Honest boundaries and untested assumptions.</h2>
+          <h2 className={styles.h2}>What&apos;s still open.</h2>
 
           <div className={styles.body}>
             <p>
-              I believe in documenting exactly what has and has not been tested. Because this is a self-initiated concept, no live testing with real users has occurred yet.
+              The design rests on reasoning about how small shops work, not on field testing yet. These are the open points.
             </p>
           </div>
 
@@ -1501,25 +1501,25 @@ export default function RupeTapPage() {
               <li className={styles.unvalidatedItem}>
                 <span className={styles.unvalidatedDot} />
                 <span>
-                  <strong>No live merchant or customer testing:</strong> I have not tested this concept in real retail environments with actual shopkeepers or shoppers.
+                  <strong>No live testing:</strong> I haven&apos;t watched real shopkeepers or customers use this yet.
                 </span>
               </li>
               <li className={styles.unvalidatedItem}>
                 <span className={styles.unvalidatedDot} />
                 <span>
-                  <strong>Reasoned step-count advantage:</strong> The step-count and speed advantages over QR are reasoned through flow analysis, not measured through empirical time trials.
+                  <strong>Speed versus QR:</strong> The step-count advantage over QR comes from flow analysis, not timed trials.
                 </span>
               </li>
               <li className={styles.unvalidatedItem}>
                 <span className={styles.unvalidatedDot} />
                 <span>
-                  <strong>Certification and fee assumptions:</strong> Technical certification timelines and merchant transaction fee assumptions must be validated with an active payments infrastructure partner.
+                  <strong>Certification and fees:</strong> Certification timelines and transaction fees need confirming with a payments partner.
                 </span>
               </li>
               <li className={styles.unvalidatedItem}>
                 <span className={styles.unvalidatedDot} />
                 <span>
-                  <strong>Physical SIM behavior:</strong> The lost-phone recovery flow assumes common physical SIM card removal patterns across tier-2 and tier-3 Indian retail environments.
+                  <strong>SIM behavior:</strong> Lost-phone recovery assumes small shopkeepers commonly lose a SIM along with a phone. I&apos;d confirm that with shopkeepers.
                 </span>
               </li>
             </ul>
@@ -1543,6 +1543,12 @@ export default function RupeTapPage() {
                   <span className={styles.testNextNumber}>3</span>
                   <span>
                     <strong>Simulated lost-device recovery walkthrough:</strong> Test remote deactivation and PAN/DigiLocker account recovery with merchants using an unfamiliar backup phone.
+                  </span>
+                </li>
+                <li className={styles.testNextItem}>
+                  <span className={styles.testNextNumber}>4</span>
+                  <span>
+                    <strong>Faster amount entry for shops with no billing software.</strong> Most small shops have no billing system, so the merchant app starts at the keypad and everything else follows. I&apos;d test whether a few quick amounts or a running total on that first screen shorten the time between &lsquo;the customer is ready&rsquo; and &lsquo;tap.&rsquo;
                   </span>
                 </li>
               </ul>
