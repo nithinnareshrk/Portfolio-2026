@@ -27,7 +27,7 @@ export default function ToolboxTalkPage() {
         <div style={{ marginTop: "20px" }}>
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgeDot} />
-            LINARC WORKS • FIELD SAFETY WORKFLOW
+            CONSTRUCTION PLATFORM • FIELD SAFETY WORKFLOW
           </div>
 
           <h1 className={styles.heroTitle}>
@@ -52,7 +52,7 @@ export default function ToolboxTalkPage() {
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>CONTEXT</span>
-            <span className={styles.metaValue}>Linarc Platform</span>
+            <span className={styles.metaValue}>Construction Platform</span>
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>SCOPE</span>

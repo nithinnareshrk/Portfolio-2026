@@ -14,14 +14,14 @@ interface ProjectNavItem {
 
 const CASE_STUDIES: ProjectNavItem[] = [
   {
-    title: 'Workflow-Driven T&M System',
-    category: 'Linarc Works / Workflow Heavy',
+    title: 'Time & Material Tickets',
+    category: 'Construction Platform / Workflow Heavy',
     path: '/works/tnm',
     markerColor: '#FF9201',
   },
   {
-    title: 'The Journal',
-    category: 'Linarc Works / Daily Site Log',
+    title: 'Daily Site Log',
+    category: 'Construction Platform / Daily Site Log',
     path: '/works/journal',
     markerColor: '#FF9201',
   },
@@ -33,13 +33,13 @@ const CASE_STUDIES: ProjectNavItem[] = [
   },
   {
     title: 'Marketplace',
-    category: 'Linarc Works / SaaS Integration',
+    category: 'Construction Platform / SaaS Integration',
     path: '/works/marketplace',
     markerColor: '#FF9201',
   },
   {
     title: 'Toolbox Talk',
-    category: 'Linarc Works / Safety Execution',
+    category: 'Construction Platform / Safety Execution',
     path: '/works/toolbox-talk',
     markerColor: '#FF9201',
   },
@@ -54,6 +54,12 @@ const CASE_STUDIES: ProjectNavItem[] = [
     category: 'Marketplace / Automotive',
     path: '/works/gear-guru',
     markerColor: '#005BC4',
+  },
+  {
+    title: 'RupeTap',
+    category: 'Concept / Tap to Pay',
+    path: '/works/rupetap',
+    markerColor: '#059669',
   },
 ];
 

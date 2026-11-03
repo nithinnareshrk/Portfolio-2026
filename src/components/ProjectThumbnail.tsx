@@ -103,7 +103,7 @@ export default function ProjectThumbnail({
   const isRehab = normalizedTitle.includes("rehabilitation") || normalizedTitle.includes("rehab") || normalizedTitle.includes("recovery");
   const isDesignSystem = normalizedTitle.includes("design system");
   const isTnM = normalizedTitle.includes("t&m") || normalizedTitle.includes("time & material") || normalizedTitle.includes("time and material");
-  const isJournal = normalizedTitle.includes("journal");
+  const isJournal = normalizedTitle.includes("journal") || normalizedTitle.includes("daily site log") || normalizedTitle.includes("site log");
   const isSingleObject = normalizedTitle.includes("single object") || normalizedTitle.includes("report");
   const isMarketplace = normalizedTitle.includes("market");
   const isToolbox = normalizedTitle.includes("toolbox") || normalizedTitle.includes("safty") || normalizedTitle.includes("safety");

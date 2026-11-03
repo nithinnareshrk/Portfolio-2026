@@ -12,50 +12,50 @@ const SS_SCROLL = "works_scrollY";
 
 const WORKS_DATA = [
   {
-    title: "Workflow-Driven T&M System",
+    title: "Time & Material Tickets",
     description: "A streamlined T&M workflow that simplifies site tracking, approvals, and reporting across teams.",
     imageUrl: "/images/works/T&M thumbnail.jpg",
     link: "/works/tnm",
-    tags: ["LINARC WORKS", "WEB & MOBILE", "WORKFLOW HEAVY"],
+    tags: ["CONSTRUCTION PLATFORM", "WEB & MOBILE", "WORKFLOW HEAVY"],
     markerColor: "#FF9201",
-    category: "LINARC WORKS",
+    category: "CONSTRUCTION PLATFORM",
   },
   {
-    title: "The Journal",
-    description: "A unified Journal workflow that centralizes daily site updates, tracking, and reporting for better visibility and control.",
+    title: "Daily Site Log",
+    description: "A unified daily site log that centralizes daily site updates, tracking, and reporting for better visibility and control.",
     imageUrl: "/images/works/Journal Thumbnail.jpg",
     link: "/works/journal",
-    tags: ["LINARC WORKS", "WEB & MOBILE"],
+    tags: ["CONSTRUCTION PLATFORM", "WEB & MOBILE"],
     markerColor: "#FF9201",
-    category: "LINARC WORKS",
+    category: "CONSTRUCTION PLATFORM",
   },
   {
     title: "Report Generator",
     description: "Streamlined report generator for clear, structured document creation.",
     imageUrl: "/images/works/Single Object thumbnail.jpg",
     link: "/works/single-object",
-    tags: ["LINARC WORKS", "WEB"],
+    tags: ["CONSTRUCTION PLATFORM", "WEB"],
     markerColor: "#FF9201",
-    category: "LINARC WORKS",
+    category: "CONSTRUCTION PLATFORM",
   },
   {
     title: "Market place",
     description: "A simplified Marketplace workflow for integrations and data mapping.",
     imageUrl: "/images/works/Marketplace Thumbnail.jpg",
     link: "/works/marketplace",
-    tags: ["LINARC WORKS", "WEB"],
+    tags: ["CONSTRUCTION PLATFORM", "WEB"],
     markerColor: "#FF9201",
-    category: "LINARC WORKS",
+    category: "CONSTRUCTION PLATFORM",
   },
   {
     title: "Toolbox Talk",
     description: "Toolbox transforms safety from documents and checklists into real, trackable on-site actions.",
     imageUrl: "/images/works/Safty thumbnail.jpg",
     link: "/works/toolbox-talk",
-    tags: ["LINARC WORKS", "WEB & MOBILE"],
+    tags: ["CONSTRUCTION PLATFORM", "WEB & MOBILE"],
     markerColor: "#FF9201",
     status: "STATUS: SCALING",
-    category: "LINARC WORKS",
+    category: "CONSTRUCTION PLATFORM",
   },
   {
     title: "Design System",
@@ -85,9 +85,18 @@ const WORKS_DATA = [
     markerColor: "#005BC4",
     category: "PERSONAL PROJECTS",
   },
+  {
+    title: "RupeTap",
+    description: "A self-initiated concept for tap-to-pay on a shopkeeper's own phone in India.",
+    imageUrl: "/images/rupetap/hero-merchant-tap.svg",
+    link: "/works/rupetap",
+    tags: ["PERSONAL PROJECT", "CONCEPT", "TAP TO PAY"],
+    markerColor: "#059669",
+    category: "PERSONAL PROJECTS",
+  },
 ];
 
-const FILTERS = ["ALL PROJECTS", "LINARC WORKS", "DESIGN SYSTEM", "PERSONAL PROJECTS"];
+const FILTERS = ["ALL PROJECTS", "CONSTRUCTION PLATFORM", "DESIGN SYSTEM", "PERSONAL PROJECTS"];
 
 // Safe storage helpers (guards against iOS Safari SecurityError in Private Browsing)
 function safeGetItem(key: string): string | null {

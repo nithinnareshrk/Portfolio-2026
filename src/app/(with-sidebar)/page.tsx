@@ -89,7 +89,7 @@ export default function Home() {
             </a>
           </div>
           <div className={styles.journalImageArea}>
-            <Image src="/images/overview/Frame 2.jpg" alt="Journal Feature" fill style={{ objectFit: 'cover' }} />
+            <Image src="/images/overview/Frame 2.jpg" alt="Daily Site Log Feature" fill style={{ objectFit: 'cover' }} />
             <div className={styles.journalImageOverlay} />
           </div>
         </div>

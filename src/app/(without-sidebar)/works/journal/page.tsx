@@ -31,11 +31,11 @@ export default function JournalPage() {
         <div style={{ marginTop: '20px' }}>
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgeDot} />
-            LINARC WORKS • DAILY SITE LOG
+            CONSTRUCTION PLATFORM • DAILY SITE LOG
           </div>
 
           <h1 className={styles.heroTitle}>
-            The Journal — Turning a Day on Site Into a Clear Record of What Happened
+            Daily Site Log — Turning a Day on Site Into a Clear Record of What Happened
           </h1>
 
           <p className={styles.heroSub}>
@@ -44,7 +44,7 @@ export default function JournalPage() {
           </p>
 
           <p className={styles.heroAccent}>
-            I designed the Journal to turn scattered daily activity into one clear, actionable record.
+            I designed the Daily Site Log to turn scattered daily activity into one clear, actionable record.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ export default function JournalPage() {
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>CONTEXT</span>
-            <span className={styles.metaValue}>Linarc Platform</span>
+            <span className={styles.metaValue}>Construction Platform</span>
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>SCOPE</span>
@@ -80,7 +80,7 @@ export default function JournalPage() {
               The information existed, but it was spread across different activities and workflows.
             </p>
             <p style={{ fontWeight: 600, color: '#1f2937' }}>
-              The Journal needed to bring that context together without making the daily record harder to maintain.
+              The Daily Site Log needed to bring that context together without making the daily record harder to maintain.
             </p>
           </div>
 
@@ -95,7 +95,7 @@ export default function JournalPage() {
                 <div className={styles.tabletScreen}>
                   <Image
                     src="/images/journal/journal-01-full-view.png"
-                    alt="Full View — The Journal daily dashboard on tablet"
+                    alt="Full View — Daily Site Log dashboard on tablet"
                     width={2048}
                     height={2732}
                     unoptimized
