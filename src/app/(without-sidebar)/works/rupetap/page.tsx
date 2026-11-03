@@ -449,38 +449,91 @@ export default function RupeTapPage() {
       <div className={styles.sectionWhite} id="constraints">
         <div className={styles.inner}>
           <div className={styles.sectionLabel}>03. CONSTRAINTS THAT SHAPED IT</div>
-          <h2 className={styles.h2}>Four hard realities of payments and hardware in India.</h2>
+          <h2 className={styles.h2}>Four realities that shaped every decision.</h2>
 
           <div className={styles.constraintsGrid}>
             <div className={styles.constraintCard}>
               <div className={styles.constraintNum}>CONSTRAINT 01</div>
-              <div className={styles.constraintTitle}>Certified acceptance is non-negotiable</div>
+              <div className={`${styles.constraintThumbWrap} ${styles.constraintThumbIconBox}`}>
+                <div className={styles.constraintIconCircle}>
+                  <ShieldCheck size={28} />
+                </div>
+              </div>
+              <div className={styles.constraintTitle}>Certified acceptance is non-negotiable.</div>
               <div className={styles.constraintDesc}>
-                Cards and phones cannot be accepted on an ordinary phone without certification. Rather than attempting a workaround, the product bets on certified phone-based acceptance from day one.
+                Cards and phones cannot be accepted on an ordinary phone without certification.
+              </div>
+              <div className={styles.constraintSoI}>
+                <span className={styles.constraintSoILabel}>So I:</span> bet on certified phone-based acceptance instead of a workaround.
               </div>
             </div>
 
             <div className={styles.constraintCard}>
               <div className={styles.constraintNum}>CONSTRAINT 02</div>
-              <div className={styles.constraintTitle}>Not every phone has NFC</div>
+              <div className={styles.constraintThumbWrap}>
+                <div className={styles.constraintThumbPhone}>
+                  <Image
+                    unoptimized
+                    src="/images/rupetap/customer/c-02-tap-not-available.png"
+                    alt="NFC not available screen thumbnail"
+                    width={804}
+                    height={1764}
+                    className={styles.constraintThumbImg}
+                  />
+                </div>
+              </div>
+              <div className={styles.constraintTitle}>Not every phone has NFC.</div>
               <div className={styles.constraintDesc}>
-                A significant portion of affordable smartphones in India lack NFC chips. The product cannot assume contactless tap is universally possible on every shopkeeper&apos;s device. On phones with no NFC, the app falls back to QR and shows one small dismissible note about an optional reader.
+                Affordable phones are the likeliest to lack it.
+              </div>
+              <div className={styles.constraintSoI}>
+                <span className={styles.constraintSoILabel}>So I:</span> made QR the baseline and tap an addition. On phones with no NFC, the app falls back to QR and shows one small dismissible note about an optional reader.
               </div>
             </div>
 
             <div className={styles.constraintCard}>
               <div className={styles.constraintNum}>CONSTRAINT 03</div>
-              <div className={styles.constraintTitle}>Contactless is disabled by default</div>
+              <div className={styles.constraintThumbWrap}>
+                <div className={styles.constraintThumbPhone}>
+                  <Image
+                    unoptimized
+                    src="/images/rupetap/customer/c-03-add-card.png"
+                    alt="Contactless not enabled tag screen thumbnail"
+                    width={804}
+                    height={1748}
+                    className={styles.constraintThumbImg}
+                  />
+                </div>
+              </div>
+              <div className={styles.constraintTitle}>Contactless is often off until the customer turns it on.</div>
               <div className={styles.constraintDesc}>
-                Even when a customer holds a contactless card, Indian banks keep tap toggled off until the customer manually turns it on. The bank controls the toggle, not the app.
+                The issuing bank controls the setting, not the app.
+              </div>
+              <div className={styles.constraintSoI}>
+                <span className={styles.constraintSoILabel}>So I:</span> added cards anyway with a &lsquo;Contactless not enabled&rsquo; tag and plain guidance.
               </div>
             </div>
 
             <div className={styles.constraintCard}>
               <div className={styles.constraintNum}>CONSTRAINT 04</div>
-              <div className={styles.constraintTitle}>The SIM leaves with a lost phone</div>
+              <div className={styles.constraintThumbWrap}>
+                <div className={styles.constraintThumbPhone}>
+                  <Image
+                    unoptimized
+                    src="/images/rupetap/merchant/m-09-sign-in-help.png"
+                    alt="Sign-in help screen thumbnail"
+                    width={804}
+                    height={1748}
+                    className={styles.constraintThumbImg}
+                  />
+                </div>
+              </div>
+              <div className={styles.constraintTitle}>The SIM leaves with a lost phone.</div>
               <div className={styles.constraintDesc}>
-                In India, physical SIM cards remain standard. When a shopkeeper loses their phone, their phone number and SMS OTP leave with it. Recovery cannot depend on SMS OTP.
+                When a shopkeeper loses their phone, their number and SMS OTP leave with it.
+              </div>
+              <div className={styles.constraintSoI}>
+                <span className={styles.constraintSoILabel}>So I:</span> made recovery independent of SMS OTP.
               </div>
             </div>
           </div>
