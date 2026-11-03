@@ -28,7 +28,7 @@ export default function MarketplacePage() {
         <div style={{ marginTop: "20px" }}>
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgeDot} />
-            LINARC WORKS • INTEGRATION ENGINE
+            CONSTRUCTION PLATFORM • INTEGRATION ENGINE
           </div>
 
           <h1 className={styles.heroTitle}>
@@ -36,11 +36,11 @@ export default function MarketplacePage() {
           </h1>
 
           <p className={styles.heroSub}>
-            Construction teams don&apos;t work in one system. Linarc manages field operations, Google Drive &amp; SharePoint store drawings, and QuickBooks tracks finances. 
+            Construction teams don&apos;t work in one system. One platform manages field operations, Google Drive &amp; SharePoint store drawings, and QuickBooks tracks finances. 
           </p>
 
           <p className={styles.heroAccent}>
-            We built Marketplace so teams can connect their existing tools directly into Linarc, translating complex data schemas into clear, human-understandable workflows.
+            We built Marketplace so teams can connect their existing tools directly into the platform, translating complex data schemas into clear, human-understandable workflows.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function MarketplacePage() {
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>CONTEXT</span>
-            <span className={styles.metaValue}>Linarc Platform</span>
+            <span className={styles.metaValue}>Construction Platform</span>
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>SCOPE</span>
@@ -74,19 +74,19 @@ export default function MarketplacePage() {
 
           <div className={styles.body}>
             <p>
-              Construction teams don&apos;t really work in one system. There&apos;s Linarc for managing the project, Google Drive or SharePoint for drawings, QuickBooks for financial information, and a whole bunch of other tools that become part of the workflow over time.
+              Construction teams don&apos;t really work in one system. There&apos;s one platform for managing the project, Google Drive or SharePoint for drawings, QuickBooks for financial information, and a whole bunch of other tools that become part of the workflow over time.
             </p>
             <p>
               And that&apos;s fine. The problem starts when people have to constantly move between all of them just to understand what&apos;s happening.
             </p>
             <p style={{ fontWeight: 600, color: "#1f2937" }}>
-              We wanted Linarc to work with the tools construction teams already depended on, rather than asking them to change the way they worked.
+              We wanted the platform to work with the tools construction teams already depended on, rather than asking them to change the way they worked.
             </p>
           </div>
 
           <div className={styles.questionBox}>
             <p className={styles.questionText}>
-              &ldquo;If the information already exists somewhere else, why should the user have to leave Linarc to get it?&rdquo;
+              &ldquo;If the information already exists somewhere else, why should the user have to leave the platform to get it?&rdquo;
             </p>
           </div>
 
@@ -215,7 +215,7 @@ export default function MarketplacePage() {
           {/* Matrix Schema Comparison */}
           <div className={styles.matrixContainer}>
             <div className={styles.matrixHeader}>
-              <span>Linarc Attribute</span>
+              <span>Platform Attribute</span>
               <span style={{ textAlign: "center" }}>Direction</span>
               <span>QuickBooks Online Attribute</span>
             </div>
@@ -257,7 +257,7 @@ export default function MarketplacePage() {
 
           <div className={styles.checklistGrid}>
             {[
-              "This is what we have in Linarc",
+              "This is what we have in the platform",
               "This is where it corresponds in QuickBooks",
               "This is the direction the data moves",
               "This is what doesn't match and needs resolution",
@@ -279,7 +279,7 @@ export default function MarketplacePage() {
               <div className={styles.browserFrame}>
                 <Image
                   src="/images/marketplace/marketplace-03-mapping.png"
-                  alt="Object mapping interface showing Linarc attributes mapped to QuickBooks"
+                  alt="Object mapping interface showing platform attributes mapped to QuickBooks"
                   width={2400}
                   height={1600}
                   unoptimized
@@ -298,7 +298,7 @@ export default function MarketplacePage() {
 
         <div className={styles.body}>
           <p>
-            Of course, things don&apos;t always line up perfectly. An object can fail, an attribute can be missing, or a connected system might not have the information Linarc expects.
+            Of course, things don&apos;t always line up perfectly. An object can fail, an attribute can be missing, or a connected system might not have the information the platform expects.
           </p>
           <p>
             We could have treated those as errors and stopped there. But that would have brought us right back to the same problem: ambiguity.
@@ -360,7 +360,7 @@ export default function MarketplacePage() {
               That&apos;s really where we wanted Marketplace to end up. A project team shouldn&apos;t have to think about whether a file came from Google Drive or whether project financials originated in QuickBooks.
             </p>
             <p>
-              They should simply be able to work in Linarc.
+              They should simply be able to work in the platform.
             </p>
             <p>
               To maintain absolute confidence over time, we built complete observability into the system with real-time sync metrics and an **ERP Data Transaction Audit Ledger**.
@@ -389,7 +389,7 @@ export default function MarketplacePage() {
 
           <div className={styles.body} style={{ marginTop: "24px" }}>
             <p>
-              The connected systems still do what they&apos;re good at. QuickBooks continues being the financial system. Google Drive continues being the place teams keep their files. But Linarc becomes the place where the project comes together.
+              The connected systems still do what they&apos;re good at. QuickBooks continues being the financial system. Google Drive continues being the place teams keep their files. And the platform becomes the place where the project comes together.
             </p>
           </div>
         </div>

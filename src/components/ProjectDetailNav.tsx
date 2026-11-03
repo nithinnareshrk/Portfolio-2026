@@ -16,13 +16,13 @@ export interface ProjectItem {
 export const PORTFOLIO_PROJECTS: ProjectItem[] = [
   {
     title: "Time & Material Tickets",
-    category: "Linarc Works / Workflow Heavy",
+    category: "Construction Platform / Workflow Heavy",
     path: "/works/tnm",
     markerColor: "#FF9201",
   },
   {
     title: "Daily Site Log",
-    category: "Linarc Works / Daily Site Log",
+    category: "Construction Platform / Daily Site Log",
     path: "/works/journal",
     markerColor: "#FF9201",
   },
@@ -34,13 +34,13 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
   },
   {
     title: "Marketplace",
-    category: "Linarc Works / SaaS Integration",
+    category: "Construction Platform / SaaS Integration",
     path: "/works/marketplace",
     markerColor: "#FF9201",
   },
   {
     title: "Toolbox Talk",
-    category: "Linarc Works / Safety Execution",
+    category: "Construction Platform / Safety Execution",
     path: "/works/toolbox-talk",
     markerColor: "#FF9201",
   },

@@ -31,7 +31,7 @@ export default function JournalPage() {
         <div style={{ marginTop: '20px' }}>
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgeDot} />
-            LINARC WORKS • DAILY SITE LOG
+            CONSTRUCTION PLATFORM • DAILY SITE LOG
           </div>
 
           <h1 className={styles.heroTitle}>
@@ -57,7 +57,7 @@ export default function JournalPage() {
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>CONTEXT</span>
-            <span className={styles.metaValue}>Linarc Platform</span>
+            <span className={styles.metaValue}>Construction Platform</span>
           </div>
           <div className={styles.metaItem}>
             <span className={styles.metaLabel}>SCOPE</span>
