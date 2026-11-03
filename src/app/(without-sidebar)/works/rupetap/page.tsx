@@ -89,7 +89,7 @@ const ITERATIONS = [
       src: "/images/rupetap/iterations/it-02-after.png",
       alt: "Updated Customer Home: UPI-style home with QR baseline",
       width: 804,
-      height: 2704,
+      height: 2332,
     },
     noticed:
       "People in India open a UPI app and scan. A tap-only home assumes a linked card and a shop that accepts tap.",
@@ -181,7 +181,7 @@ const CUSTOMER_SCREENS = [
     caption: "Home card skipped: Scan QR promoted to hero with empty-state card prompt",
     image: "/images/rupetap/customer/c-05-home-card-skipped.png",
     width: 804,
-    height: 2704,
+    height: 2332,
     decision: "Defaults to QR scanner hero when card addition was skipped",
   },
   {
@@ -217,7 +217,7 @@ const CUSTOMER_SCREENS = [
     caption: "Payment declined with switch card: Specific decline reason with inline card switch",
     image: "/images/rupetap/customer/c-08-payment-not-completed.png",
     width: 804,
-    height: 1664,
+    height: 1612,
     decision: "Identifies bank limit reached with instant alternative card payment",
   },
   {
@@ -1041,7 +1041,7 @@ export default function RupeTapPage() {
                         <Image unoptimized src="/images/rupetap/customer/c-08-payment-not-completed.png"
                           alt="Payment declined with specific reason and inline card switch"
                           width={804}
-                          height={1664}
+                          height={1612}
                           className={styles.phoneScreenImg}
                         />
                       </div>
@@ -1171,7 +1171,7 @@ export default function RupeTapPage() {
                         <Image unoptimized src="/images/rupetap/customer/c-05-home-card-skipped.png"
                           alt="Home screen with card skipped (Scan QR hero)"
                           width={804}
-                          height={2704}
+                          height={2332}
                           className={styles.phoneScreenImg}
                         />
                       </div>
