@@ -561,22 +561,88 @@ export default function RupeTapPage() {
             </p>
           </div>
 
-          <div className={styles.productShapeRow}>
-            <div className={styles.appShapeCard}>
-              <span className={styles.appShapeBadge}>APP 01</span>
+          <div
+            className={styles.productShapeRow}
+            role="tablist"
+            aria-label="Select app to view flows"
+          >
+            <button
+              type="button"
+              role="tab"
+              id="flow-tab-customer"
+              aria-selected={activeFlowTab === "customer"}
+              aria-controls="flow-panel-customer"
+              tabIndex={activeFlowTab === "customer" ? 0 : -1}
+              className={`${styles.appShapeCard} ${activeFlowTab === "customer" ? styles.appShapeCardActive : ""}`}
+              onClick={() => setActiveFlowTab("customer")}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+                  e.preventDefault();
+                  setActiveFlowTab("merchant");
+                  document.getElementById("flow-tab-merchant")?.focus();
+                }
+              }}
+            >
+              <div className={styles.appShapeCardTop}>
+                <span className={styles.appShapeBadge}>APP 01</span>
+                <span
+                  className={`${styles.appShapeTabIndicator} ${
+                    activeFlowTab === "customer" ? styles.appShapeTabIndicatorActive : ""
+                  }`}
+                >
+                  {activeFlowTab === "customer" ? (
+                    <>
+                      <Check size={12} /> Viewing flows
+                    </>
+                  ) : (
+                    "View flows"
+                  )}
+                </span>
+              </div>
               <h3 className={styles.appShapeTitle}>Customer App</h3>
               <p className={styles.appShapeDesc}>
                 A full UPI-style app with Tap to Pay as the hero. It retains familiar QR scanning and bank account links, but promotes tapping first whenever supported.
               </p>
-            </div>
+            </button>
 
-            <div className={styles.appShapeCard}>
-              <span className={styles.appShapeBadge}>APP 02</span>
+            <button
+              type="button"
+              role="tab"
+              id="flow-tab-merchant"
+              aria-selected={activeFlowTab === "merchant"}
+              aria-controls="flow-panel-merchant"
+              tabIndex={activeFlowTab === "merchant" ? 0 : -1}
+              className={`${styles.appShapeCard} ${activeFlowTab === "merchant" ? styles.appShapeCardActive : ""}`}
+              onClick={() => setActiveFlowTab("merchant")}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+                  e.preventDefault();
+                  setActiveFlowTab("customer");
+                  document.getElementById("flow-tab-customer")?.focus();
+                }
+              }}
+            >
+              <div className={styles.appShapeCardTop}>
+                <span className={styles.appShapeBadge}>APP 02</span>
+                <span
+                  className={`${styles.appShapeTabIndicator} ${
+                    activeFlowTab === "merchant" ? styles.appShapeTabIndicatorActive : ""
+                  }`}
+                >
+                  {activeFlowTab === "merchant" ? (
+                    <>
+                      <Check size={12} /> Viewing flows
+                    </>
+                  ) : (
+                    "View flows"
+                  )}
+                </span>
+              </div>
               <h3 className={styles.appShapeTitle}>Merchant App</h3>
               <p className={styles.appShapeDesc}>
                 A payment rail only. Deliberately stripped of inventory, staff rosters, and complex analytics. It does one job: receive payments and confirm them clearly.
               </p>
-            </div>
+            </button>
           </div>
 
           {/* Customer & Merchant Flows Diagram */}
@@ -589,47 +655,6 @@ export default function RupeTapPage() {
                     ? "Structured paths covering setup, normal use, network disruption, and failure resolution."
                     : "Structured paths covering setup, normal use, network disruption, failure resolution, and device recovery."}
                 </div>
-              </div>
-
-              <div className={styles.galleryTabs} role="tablist" aria-label="Select app flows">
-                <button
-                  type="button"
-                  role="tab"
-                  id="flow-tab-customer"
-                  aria-selected={activeFlowTab === "customer"}
-                  aria-controls="flow-panel-customer"
-                  tabIndex={activeFlowTab === "customer" ? 0 : -1}
-                  className={`${styles.galleryTabBtn} ${activeFlowTab === "customer" ? styles.galleryTabBtnActive : ""}`}
-                  onClick={() => setActiveFlowTab("customer")}
-                  onKeyDown={(e) => {
-                    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-                      e.preventDefault();
-                      setActiveFlowTab("merchant");
-                      document.getElementById("flow-tab-merchant")?.focus();
-                    }
-                  }}
-                >
-                  Customer
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  id="flow-tab-merchant"
-                  aria-selected={activeFlowTab === "merchant"}
-                  aria-controls="flow-panel-merchant"
-                  tabIndex={activeFlowTab === "merchant" ? 0 : -1}
-                  className={`${styles.galleryTabBtn} ${activeFlowTab === "merchant" ? styles.galleryTabBtnActive : ""}`}
-                  onClick={() => setActiveFlowTab("merchant")}
-                  onKeyDown={(e) => {
-                    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-                      e.preventDefault();
-                      setActiveFlowTab("customer");
-                      document.getElementById("flow-tab-customer")?.focus();
-                    }
-                  }}
-                >
-                  Merchant
-                </button>
               </div>
             </div>
 
