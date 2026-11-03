@@ -307,7 +307,7 @@ const MERCHANT_SCREENS = [
   {
     num: "09",
     title: "Sign-in help",
-    caption: "Sign-in help: Multi-factor identity options bypassing lost SMS dependency",
+    caption: "Sign-in help: A recovery path that doesn't depend on the lost SIM",
     image: "/images/rupetap/merchant/m-09-sign-in-help.png",
     width: 804,
     height: 1748,
@@ -533,7 +533,7 @@ export default function RupeTapPage() {
                 When a shopkeeper loses their phone, their number and SMS OTP leave with it.
               </div>
               <div className={styles.constraintSoI}>
-                <span className={styles.constraintSoILabel}>So I:</span> made recovery independent of SMS OTP.
+                <span className={styles.constraintSoILabel}>So I:</span> designed a recovery path that doesn&apos;t depend on the lost SIM.
               </div>
             </div>
           </div>
@@ -1250,7 +1250,7 @@ export default function RupeTapPage() {
               <div className={styles.decisionHeader}>
                 <span className={styles.decisionLetter}>DECISION G</span>
                 <h3 className={styles.decisionTitle}>
-                  Lost-phone recovery that doesn&apos;t depend on OTP.
+                  A recovery path that doesn&apos;t depend on the lost SIM.
                 </h3>
               </div>
 
@@ -1300,7 +1300,7 @@ export default function RupeTapPage() {
                     </div>
                   </div>
                   <div className={styles.captionBar}>
-                    <span className={styles.captionLabel}>Decision g:</span> Lost-phone recovery doesn&apos;t depend on OTP; remote deactivation and multi-factor bank identity secure funds.
+                    <span className={styles.captionLabel}>Decision g:</span> A recovery path that doesn&apos;t depend on the lost SIM; remote deactivation and multi-factor bank identity secure funds.
                   </div>
                 </div>
               </div>
@@ -1549,6 +1549,12 @@ export default function RupeTapPage() {
                   <span className={styles.testNextNumber}>4</span>
                   <span>
                     <strong>Faster amount entry for shops with no billing software.</strong> Most small shops have no billing system, so the merchant app starts at the keypad and everything else follows. I&apos;d test whether a few quick amounts or a running total on that first screen shorten the time between &lsquo;the customer is ready&rsquo; and &lsquo;tap.&rsquo;
+                  </span>
+                </li>
+                <li className={styles.testNextItem}>
+                  <span className={styles.testNextNumber}>5</span>
+                  <span>
+                    <strong>Recovery without the old SIM.</strong> Aadhaar OTP goes to the linked mobile number, which may be the one that was lost. I&apos;d test which recovery methods small shopkeepers can actually complete without it, such as bank account verification or a recovery code set at setup.
                   </span>
                 </li>
               </ul>
