@@ -15,6 +15,12 @@ export interface ProjectItem {
 
 export const PORTFOLIO_PROJECTS: ProjectItem[] = [
   {
+    title: "RupeTap",
+    category: "Concept / Tap to Pay",
+    path: "/works/rupetap",
+    markerColor: "#059669",
+  },
+  {
     title: "Time & Material Tickets",
     category: "Construction Platform / Workflow Heavy",
     path: "/works/tnm",
@@ -55,12 +61,6 @@ export const PORTFOLIO_PROJECTS: ProjectItem[] = [
     category: "Marketplace / Automotive",
     path: "/works/gear-guru",
     markerColor: "#005BC4",
-  },
-  {
-    title: "RupeTap",
-    category: "Concept / Tap to Pay",
-    path: "/works/rupetap",
-    markerColor: "#059669",
   },
 ];
 

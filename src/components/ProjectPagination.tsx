@@ -14,6 +14,12 @@ interface ProjectNavItem {
 
 const CASE_STUDIES: ProjectNavItem[] = [
   {
+    title: 'RupeTap',
+    category: 'Concept / Tap to Pay',
+    path: '/works/rupetap',
+    markerColor: '#059669',
+  },
+  {
     title: 'Time & Material Tickets',
     category: 'Construction Platform / Workflow Heavy',
     path: '/works/tnm',
@@ -54,12 +60,6 @@ const CASE_STUDIES: ProjectNavItem[] = [
     category: 'Marketplace / Automotive',
     path: '/works/gear-guru',
     markerColor: '#005BC4',
-  },
-  {
-    title: 'RupeTap',
-    category: 'Concept / Tap to Pay',
-    path: '/works/rupetap',
-    markerColor: '#059669',
   },
 ];
 
