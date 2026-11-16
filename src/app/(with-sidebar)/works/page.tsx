@@ -12,6 +12,15 @@ const SS_SCROLL = "works_scrollY";
 
 const WORKS_DATA = [
   {
+    title: "RupeTap",
+    description: "A self-initiated concept for tap-to-pay on a shopkeeper's own phone in India.",
+    imageUrl: "/images/rupetap/hero-merchant-tap.svg",
+    link: "/works/rupetap",
+    tags: ["PERSONAL PROJECT", "CONCEPT", "TAP TO PAY"],
+    markerColor: "#059669",
+    category: "PERSONAL PROJECTS",
+  },
+  {
     title: "Time & Material Tickets",
     description: "A streamlined T&M workflow that simplifies site tracking, approvals, and reporting across teams.",
     imageUrl: "/images/works/T&M thumbnail.jpg",
@@ -83,15 +92,6 @@ const WORKS_DATA = [
     link: "/works/gear-guru",
     tags: ["PERSONAL PROJECT", "CASE STUDY", "2024"],
     markerColor: "#005BC4",
-    category: "PERSONAL PROJECTS",
-  },
-  {
-    title: "RupeTap",
-    description: "A self-initiated concept for tap-to-pay on a shopkeeper's own phone in India.",
-    imageUrl: "/images/rupetap/hero-merchant-tap.svg",
-    link: "/works/rupetap",
-    tags: ["PERSONAL PROJECT", "CONCEPT", "TAP TO PAY"],
-    markerColor: "#059669",
     category: "PERSONAL PROJECTS",
   },
 ];
