@@ -1,9 +1,9 @@
 import { ArrowRight, LayoutTemplate } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import WhatIBring from "@/components/WhatIBring";
 import ProofRow from "@/components/ProofRow";
 import ThingsICareAbout from "@/components/ThingsICareAbout";
+import WritingsCarousel from "@/components/WritingsCarousel";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
@@ -69,31 +69,7 @@ export default function Home() {
       <ThingsICareAbout />
 
       {/* ── 04. WRITINGS SECTION ── */}
-      <section className={styles.journalSection}>
-        <div className={styles.journalHeader}>
-          <h2 className={styles.journalTitle}>Writings</h2>
-          <div className={styles.journalLine}></div>
-        </div>
-        
-        <div className={styles.journalCard}>
-          <div className={styles.journalDarkContent}>
-            <div className={styles.journalMeta}>LATEST ARTICLE • MAR 2024</div>
-            <h3 className={styles.journalHeading}>
-              The Psychology<br/>of Minimalist<br/>Interfaces
-            </h3>
-            <p className={styles.journalText}>
-              Exploring how cognitive load is reduced through the intentional use of whitespace and tonal shifts.
-            </p>
-            <a href="https://www.linkedin.com/posts/nithinnaresh-r-k-55a553274_uxdesign-universaldesign-accessibility-ugcPost-7422272716080193537-GL43/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMAKFYByKCGqaR-JP6qxTTzXxaNJW5wFHo" target="_blank" rel="noopener noreferrer" className={styles.readPostBtn}>
-              READ POST
-            </a>
-          </div>
-          <div className={styles.journalImageArea}>
-            <Image src="/images/overview/Frame 2.jpg" alt="Daily Site Log Feature" fill style={{ objectFit: 'cover' }} />
-            <div className={styles.journalImageOverlay} />
-          </div>
-        </div>
-      </section>
+      <WritingsCarousel />
 
       {/* ── FOOTER ── */}
       <Footer />
