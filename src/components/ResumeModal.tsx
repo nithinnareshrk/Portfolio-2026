@@ -187,15 +187,15 @@ export default function ResumeModal() {
           <ul className={styles.highlightList}>
             <li className={styles.highlightItem}>
               <span className={styles.bulletDot} />
-              <span><strong>Linarc</strong>: Led end-to-end design for 6+ interconnected B2B SaaS modules (Safety, Equipment Management, Single & multi-object report generator (editor), and Checklists).</span>
+              <span><strong>Linarc (Sep 2024 - Dec 2025)</strong>: Led end-to-end design for 6+ interconnected B2B SaaS modules, including Safety, Equipment Management, a single and multi-object report generator, and Checklists.</span>
             </li>
             <li className={styles.highlightItem}>
               <span className={styles.bulletDot} />
-              <span><strong>Design System</strong>: Established reusable UI patterns (20+ components) and variable token logic for cross-module scalability.</span>
+              <span><strong>Independent design work (Dec 2025 - Present)</strong>: RupeTap, a new design system, and two refreshed case studies.</span>
             </li>
             <li className={styles.highlightItem}>
               <span className={styles.bulletDot} />
-              <span><strong>Skills</strong>: Enterprise SaaS UX, Information Architecture, Interactive Prototyping, Figma, Design Systems.</span>
+              <span><strong>Skills</strong>: UX Research, Interaction Design, User Flows, IA, Wireframing, Prototyping, Design Systems, Figma, FigJam, Miro, Adobe CC (Photoshop, Illustrator), Maze, Cursor, Stitch, Claude, Antigravity.</span>
             </li>
             <li className={styles.highlightItem}>
               <span className={styles.bulletDot} />

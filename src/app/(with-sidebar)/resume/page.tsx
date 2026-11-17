@@ -12,32 +12,54 @@ const EXPERIENCE = [
   {
     role: "Product Designer",
     company: "Linarc",
-    period: "Sep 2024 – Dec 2025",
+    period: "Sep 2024 - Dec 2025",
     location: "Chennai, Tamil Nadu",
     bullets: [
-      "Led end-to-end design for 6+ interconnected B2B SaaS modules including Safety, Equipment Management, Single & multi-object report generator (editor), and Checklists.",
-      "Mapped ambiguous operational workflows into documented IA and interaction specs before handoff, reducing mid-development design clarifications across 6+ modules.",
-      "Established reusable UI patterns (20+ components) and foundational design logic to support cross-module scalability.",
-      "Facilitated stakeholder workshops to surface conflicting requirements early, aligning product, design, and engineering on feature scope before development began.",
-      "Collaborated closely with engineering to align usability goals with technical feasibility during implementation cycles.",
-      "Managed parallel feature streams while maintaining product-wide interaction consistency.",
-      "Integrated AI-assisted tools into early design workflows to rapidly prototype variations and refine complex interaction patterns."
+      "Led end-to-end design for 6+ interconnected B2B SaaS modules, including Safety, Equipment Management, a single and multi-object report generator, and Checklists.",
+      "Mapped ambiguous workflows into IA and interaction specs before handoff, reducing mid-development clarifications.",
+      "Built a reusable UI pattern library (20+ components) for cross-module scalability.",
+      "Ran stakeholder workshops to surface conflicting requirements early, and aligned scope with engineering feasibility.",
+      "Managed parallel feature streams while keeping interaction patterns consistent, using AI tools to prototype variations early."
     ]
   }
 ];
 
+const INDEPENDENT_WORK = {
+  role: "Independent design work",
+  period: "Dec 2025 - Present",
+  summary: "RupeTap, a new design system, and two refreshed case studies.",
+  selectedProjects: [
+    {
+      name: "RupeTap (concept, 2026)",
+      description: "Two-app tap-to-pay concept so a shopkeeper's own phone can accept contactless payments, designed around the moment both sides need to be sure the payment landed."
+    },
+    {
+      name: "Design System (2026)",
+      description: "Atomic framework with 24+ components, 220+ variants and scalable tokens."
+    },
+    {
+      name: "GearGuru (refreshed 2026)",
+      description: "Restructured discovery and checkout around peer trust signals after finding community validation drives purchase confidence; validated with 17 users."
+    },
+    {
+      name: "Structured Recovery (refreshed 2026)",
+      description: "Adaptive rehabilitation platform prioritizing cognitive clarity and progressive safety; re-architected dashboard and booking flows over a 1.5-year evolution."
+    }
+  ]
+};
+
 const SKILL_CATEGORIES = [
   {
     title: "Design",
-    skills: ["UX Research", "Interaction Design", "User Flows", "Information Architecture", "Wireframing", "Prototyping", "Design Systems", "Component Architecture"]
+    skills: ["UX Research", "Interaction Design", "User Flows", "IA", "Wireframing", "Prototyping", "Design Systems"]
   },
   {
     title: "Tools",
     skills: ["Figma", "FigJam", "Miro", "Adobe CC (Photoshop, Illustrator)", "Maze"]
   },
   {
-    title: "AI-Assisted Prototyping",
-    skills: ["Cursor", "Loveable"]
+    title: "AI tools",
+    skills: ["Cursor", "Stitch", "Claude", "Antigravity"]
   }
 ];
 
@@ -66,7 +88,7 @@ export default function ResumePage() {
               Nithinnaresh <span className={styles.roleHighlight}>R K</span>
             </h1>
             <p className={styles.summary}>
-              Product Designer specializing in workflow-heavy B2B SaaS platforms. Experienced in structuring ambiguous operational problems into scalable systems, reusable interaction patterns, and cross-module product experiences. Specializes in making complex operational workflows feel simple — particularly in construction and enterprise SaaS contexts where user cognitive load is high.
+              Product designer for workflow-heavy B2B SaaS, turning ambiguous operations into scalable systems and reusable patterns. I make complex flows feel simple, from enterprise modules to a mobile tap-to-pay concept, and prototype with AI tools.
             </p>
           </div>
 
@@ -101,6 +123,27 @@ export default function ResumePage() {
                 </ul>
               </div>
             ))}
+
+            <div className={styles.expCard}>
+              <div className={styles.expHeader}>
+                <div className={styles.expRoleGroup}>
+                  <h3 className={styles.expRole}>{INDEPENDENT_WORK.role}</h3>
+                  <span className={styles.summary}>{INDEPENDENT_WORK.summary}</span>
+                </div>
+                <div className={styles.expMeta}>
+                  <span className={styles.expPeriod}>{INDEPENDENT_WORK.period}</span>
+                </div>
+              </div>
+
+              <h4 className={styles.skillCategoryTitle}>Selected Projects</h4>
+              <ul className={styles.expBullets}>
+                {INDEPENDENT_WORK.selectedProjects.map((proj, pIdx) => (
+                  <li key={pIdx}>
+                    <strong>{proj.name}:</strong> {proj.description}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 

@@ -75,22 +75,54 @@ export default function Home() {
           <div className={styles.journalLine}></div>
         </div>
         
-        <div className={styles.journalCard}>
-          <div className={styles.journalDarkContent}>
-            <div className={styles.journalMeta}>LATEST ARTICLE • MAR 2024</div>
-            <h3 className={styles.journalHeading}>
-              The Psychology<br/>of Minimalist<br/>Interfaces
-            </h3>
-            <p className={styles.journalText}>
-              Exploring how cognitive load is reduced through the intentional use of whitespace and tonal shifts.
-            </p>
-            <a href="https://www.linkedin.com/posts/nithinnaresh-r-k-55a553274_uxdesign-universaldesign-accessibility-ugcPost-7422272716080193537-GL43/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMAKFYByKCGqaR-JP6qxTTzXxaNJW5wFHo" target="_blank" rel="noopener noreferrer" className={styles.readPostBtn}>
-              READ POST
-            </a>
+        <div className={styles.journalList}>
+          <div className={styles.journalCard}>
+            <div className={styles.journalDarkContent}>
+              <div className={styles.journalMeta}>LATEST ARTICLE • Oct 2026</div>
+              <h3 className={styles.journalHeading}>
+                Designing trust and safety for people, not patterns
+              </h3>
+              <p className={styles.journalText}>
+                What happens when a system built to protect users disrupts how they naturally use the product, using WhatsApp restrictions as the example.
+              </p>
+              <a href="https://lnkd.in/p/gtXkGMbR" target="_blank" rel="noopener noreferrer" className={styles.readPostBtn}>
+                READ POST
+              </a>
+            </div>
+            <div className={`${styles.journalImageArea} ${styles.journalPosterArea}`}>
+              <div className={styles.journalPosterContent}>
+                <h4 className={styles.journalPosterTitle}>
+                  Designing Trust &amp; Safety.<br />For People, Not Patterns.
+                </h4>
+                <p className={styles.journalPosterBody}>
+                  What happens when a system built to protect users disrupts how they naturally use the product, using WhatsApp restrictions as the example.
+                </p>
+                <div className={styles.journalPosterFooter}>
+                  <span>A UX observation</span>
+                  <span aria-hidden="true">→</span>
+                </div>
+              </div>
+              <div className={styles.journalImageOverlay} />
+            </div>
           </div>
-          <div className={styles.journalImageArea}>
-            <Image src="/images/overview/Frame 2.jpg" alt="Daily Site Log Feature" fill style={{ objectFit: 'cover' }} />
-            <div className={styles.journalImageOverlay} />
+
+          <div className={styles.journalCard}>
+            <div className={styles.journalDarkContent}>
+              <div className={styles.journalMeta}>LATEST ARTICLE • Feb 2026</div>
+              <h3 className={styles.journalHeading}>
+                The Psychology<br/>of Minimalist<br/>Interfaces
+              </h3>
+              <p className={styles.journalText}>
+                Exploring how cognitive load is reduced through the intentional use of whitespace and tonal shifts.
+              </p>
+              <a href="https://www.linkedin.com/posts/nithinnaresh-r-k-55a553274_uxdesign-universaldesign-accessibility-ugcPost-7422272716080193537-GL43/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMAKFYByKCGqaR-JP6qxTTzXxaNJW5wFHo" target="_blank" rel="noopener noreferrer" className={styles.readPostBtn}>
+                READ POST
+              </a>
+            </div>
+            <div className={styles.journalImageArea}>
+              <Image src="/images/overview/Frame 2.jpg" alt="Daily Site Log Feature" fill style={{ objectFit: 'cover' }} />
+              <div className={styles.journalImageOverlay} />
+            </div>
           </div>
         </div>
       </section>
